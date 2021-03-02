@@ -1,0 +1,90 @@
+<div id='blogTopicHolder' class='rtl container-fluid s-supp-bg-4 p-4 d-flex flex-column'>
+    <!-- Header Section  -->
+    <section *ngIf='isLoaded' class='container my-5'>
+        <div class='row'>
+            <!-- topic Image -->
+            <div class='col-lg-7 col-12 pb-lg-0 pb-5'>
+                <div class='s-topic-img-box s-bg-img w-100 s-white-50-bg rounded pr-4'
+                [class.s-bg-no-img]='!selectedTopic.topic_image'
+                [ngStyle]="selectedTopic.topic_image ? {
+                    'background-image' :'url('+ blog_topics_service.getUrl(selectedTopic.topic_image) +')',
+                    'backgroun-size' : 'cover'
+                } : false">
+                </div>
+            </div>
+            <!-- Next Topics Slider -->
+            <div class='d-lg-block d-none col-lg-5'>
+                <div class='h-100 d-flex flex-column pl-4'>
+                    <!-- up controllers -->
+                    <div class='row'>
+                        <div class='col'>
+                            <button disabled class='s-not-clickable btn s-white-50-bg s-supp-cr-1 rounded px-4 s-temp-btn'>التالى</button>
+                        </div>
+                        <div class='col'>
+                            <button (click)='shift3Topics(prevTopic._id, "p")' class='s-arrow-up-icon s-bg-img btn s-white-50-bg rounded px-5 s-temp-btn'></button>
+                        </div>
+                        <div class='col'></div>
+                    </div>
+                    <!-- Next Topics -->
+                    <div  class='row mb-auto py-4'>
+                        <!-- Topic Holder -->
+                        <div class='col-12'>
+                            <ng-container *ngFor='let topic of nextPrevTopics'>
+                                <div (click)='clickTopic(topic)' class='row s-slider-topic-holder rounded s-white-50-bg mb-2'>
+                                    <!-- image -->
+                                    <div class='col-6 p-0 rounded-left'>
+                                        <div class='s-bg-img rounded-left s-bg-no-img s-slider-topic-holder'
+                                        [class.s-bg-no-img]='!topic.topic_image'
+                                        [ngStyle]="selectedTopic.topic_image ? {
+                                            'background-image' :'url('+ blog_topics_service.getUrl(topic.topic_image) +')',
+                                            'backgroun-size' : 'cover'
+                                        } : false">
+                                    </div>
+                                    </div>
+                                    <!-- text -->
+                                    <div class='col-6 rounded-right '>
+                                        <!-- name -->
+                                        <p class='m-0 pt-4 pb-2 text-center text-md-right'><b>{{topic.topic_name}}</b></p>
+                                        <!-- Description -->
+                                        <p class='s-supp-cr-1 px-2 pb-3 text-center text-md-right' [innerHTML]='topic.topic_content'></p>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <!-- down controllers -->
+                    <div class='row'>
+                        <div class='col'></div>
+                        <div class='col'>
+                            <button (click)='shift3Topics(nextTopic._id, "n")' class='s-arrow-down-icon s-bg-img btn s-white-50-bg rounded px-5 s-temp-btn'></button>
+                        </div>
+                        <div class='col d-flex justify-content-end'>
+                            <button class='btn s-white-50-bg s-supp-cr-1 rounded px-4 s-temp-btn'>{{selectedTopicTag.tag_name}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Topic Body -->
+    <section *ngIf='isLoaded' class='container'>
+        <!-- content Head -->
+        <div class='row flex-lg-row flex-column justify-content-lg-start align-items-center align-items-lg-start'>
+            <div class='mb-4 mr-4 m-lg-0'>
+                <p class='h3 s-supp-cr-1 rounded px-4 s-temp-btn'>{{selectedTopic.topic_name}}</p>
+            </div>
+            <div>
+                <button disabled class='s-not-clickable btn s-white-50-bg s-supp-cr-1 rounded px-4 s-temp-btn mr-4'>{{selectedTopicTag.tag_name}}</button>
+                <button disabled class='s-not-clickable btn s-white-50-bg s-supp-cr-1 rounded px-4 s-temp-btn'>{{selectedTopic.updated_at | date }}</button>
+            </div>
+
+        </div>
+        <div class='row px-5 py-4'>
+            <p class='text-justify' [innerHTML]='selectedTopic.topic_content'></p>
+        </div>
+    </section>
+    <!-- User Comments  -->
+    <section *ngIf='isLoaded' class='container my-5'>
+        <app-blog-user-comments></app-blog-user-comments>
+    </section>
+</div>

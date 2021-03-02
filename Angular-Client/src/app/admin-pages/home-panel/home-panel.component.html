@@ -1,0 +1,60 @@
+<div id='homeHolder' class='container-fluid s-dark-bg p-4 d-flex flex-column'>
+    <app-notifications></app-notifications>
+    <div *ngIf='isloaded' class='container'>
+        <!-- Head -->
+        <div class='row'>
+            <div class='col'>
+                <p class='h1 pt-4 px-5 s-supp-cr-2 text-uppercase text-lg-left text-center'>Home<span class='h3 text-capitalize s-supp-cr-1'> Page</span></p>
+                <hr class='s-dark2-bg mx-5 my-4'>
+            </div>
+        </div>
+        <!-- Body -->
+        <div class='row'>
+            <div class='col'>
+                <!-- navigation -->
+                <p class="nav-link s-supp-cr-1 lead m-0 pb-4 d-block d-lg-none text-center">SECTIONS</p>
+                <ul class="px-5 nav nav-pills mb-3 s-dark2-bg d-flex flex-row align-items-center py-4 px-0 rounded-top justify-content-lg-start justify-content-center"
+                    id="pills-tab" role="tablist">
+                    <li class="nav-item mr-5 d-lg-block d-none">
+                        <p class="nav-link s-supp-cr-1 lead m-0">SECTIONS</p>
+                    </li>
+                    <li *ngFor='let title of sectionTitles let i = index' class="nav-item mx-2">
+                        <a class="nav-link s-temp-btn  btn rounded s-nav-btns s-supp-cr-4" [class.active]='i == 0'
+                            [attr.aria-selected]="i == 0 ? true : false" id="pills-home-tab" data-toggle="pill"
+                            [href]="'#tab-' + title" role="tab" [attr.aria-controls]="title">{{title}}</a>
+                    </li>
+                </ul>
+                <!-- From Control -->
+                <form #f="ngForm" class='w-100' action="">
+                    <div class="tab-content s-dark2-bg rounded-bottom p-4 s-supp-cr-4" id="pills-tabContent">
+                        <!-- Video Section -->
+                        <div class="tab-pane fade show mx-lg-5 mx-2 active pb-4" [attr.id]="'tab-' + sectionTitles[0]" role="tabpanel"
+                            [attr.aria-labelledby]="'pills-'+ sectionTitles[0] +'-tab'">
+                            <!-- youtube Vdeio InSec -->
+                            <div *ngIf='isloaded' class='my-2'>
+                                <label class='my-2 s-supp-cr-1' for="">YouTube video</label>
+                                <!-- video Src Inp -->
+                                <div class="input-group md-form form-sm form-2 pl-0 rounded">
+                                    <i disabled
+                                        class="btn input-group-text s-icon-btn s-icon-video s-no-rounded-right s-dark-bg border-0 rounded-left"></i>
+                                    <input type="text" name="Section Title" placeholder="YouTube Video..." required
+                                        [pattern]="va_serv.urlRegex"
+                                        [class.borderRed]="sectionTitle.touched && !sectionTitle.valid"
+                                        ngModel required #sectionTitle="ngModel"
+                                        [(ngModel)]='data[0].page_video'
+                                        class='form-control s-temp-btn  my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left'>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Save -->
+                    <div class="input-group md-form form-sm form-2 pl-0 d-flex justify-content-lg-end justify-content-center pt-5">
+                        <button (click)='updateData()'
+                            [disabled]='f.invalid'
+                            class='btn s-btn-tem-h s-save-btn mx-1 px-5 input-group-text border-0 s-supp-bg-1-opt5 s-main-cr rounded'>Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

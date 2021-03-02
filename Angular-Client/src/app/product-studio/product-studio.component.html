@@ -1,0 +1,124 @@
+<div id='productsHolder' class='rtl container-fluid s-supp-bg-3 p-4 d-flex flex-column'>
+    <ng-container *ngIf='isLoaded'>
+        <!-- Product ((Name)) {{ROW}} -->
+        <div class='row justify-content-center p-lg-5 p-4'>
+            <div class='col-lg-4 col-md-6 col'>
+                <p class='text-center p-3 h4 s-product-named s-no-border s-dark-cr text-uppercase'>{{product.prod_name}}</p>
+            </div>
+        </div>
+        <!-- Product ((Info)) {{ROW}} -->
+        <div class='row flex-fill'>
+            <!-- arrow left [0] -->
+            <!-- <div class='col-1 d-flex order-0'>
+                <div class='s-arrow-left w-100 h-100 s-page-opacity'></div>
+            </div> -->
+            <!-- Description and Categorys [1]-->
+            <div class='col-lg col-12 s-dark-cr p-4 d-flex flex-column order-lg-0 order-2'>
+                <!-- Description -->
+                <div class='row'>
+                    <div class='col'>
+                        <p class='h5 text-center text-lg-right p-3 p-lg-0'>الوصف</p>
+                        <p title='Procuct Description' class='text-center text-lg-right w-100 s-supp-bg-3 s-no-border s-prod-desc s-dark-cr p-2'>
+                        {{product.prod_desc}}
+                        </p>
+                    </div>
+                </div>
+                <!-- Price -->
+                <div *ngIf='product.price' class='row px-3 m-3~'>
+                    <div class='col d-flex justify-content-lg-start justify-content-center p-lg-0'>
+                        <div class='border-0 s-prod-tag-label d-flex align-items-center s-temp-btn'>
+                            <span class='s-dark-cr'>السعر&nbsp; &nbsp; </span>
+                        </div>
+                        <div class='s-temp-btn s-prod-tag rounded light-yellow-bg py-0 px-3 border-0 d-flex align-items-center'>
+                            {{product.price.cost}} {{product.price.tag}}
+                        </div>
+                
+                    </div>
+                </div>
+                <!-- Categorys -->
+                <div class='row p-3 m-3~'>
+                    <div class='col d-flex justify-content-lg-start justify-content-center p-lg-0'>
+                        <!-- Add Category -->
+                        <div class=' s-prod-tag-label border-0 d-flex align-items-center s-temp-btn'>
+                            <span class='s-dark-cr'>التصنيف &nbsp; &nbsp; </span>
+                        </div>
+                        <div class='s-temp-btn s-prod-tag rounded light-yellow-bg py-0 px-3 border-0 d-flex align-items-center'>
+                            {{category.categ_name}}
+                        </div>
+                
+                    </div>
+                </div>
+                <!-- Sub Categories  -->
+                <div class='row px-3 justify-content-lg-start justify-content-center'>
+                    <!-- Add Sub Categories -->
+                    <div class=' s-prod-tag-label border-0 d-flex align-items-center s-temp-btn'>
+                        <span class='s-dark-cr'>النوع &nbsp; &nbsp; </span>
+                    </div>
+                    <div class='rounded s-prod-tag s-white-bg py-0 px-3 border-0 d-flex align-items-center dropdown s-temp-btn'>
+                        {{product.prod_sub_category}}
+                    </div>
+                </div>
+            </div>
+            <!-- Products Main Image  [2]-->
+            <div class='col-lg col-12 s-main-img-col p-4 d-flex justify-content-center align-items-center order-lg-1 order-0'>
+                <div id='mainImgBox' class="s-main-image-view s-page-opacity-2 rounded" [ngStyle]="{
+                    'background-image' :'url('+ prod_service.getUrl(mainImage) + ')',
+                    ' background-repeat': 'no-repeat',
+                    'background-position': 'center',
+                    'background-size': 'cover',
+                    'border': 'none'
+                }">
+                </div>
+            </div>
+            <!-- Products Side Images and colors [3]-->
+            <div class=' col-lg col-12 s-side-col p-4 d-flex flex-column order-1'>
+                <div id='colorHolder' class=' row h-100'>
+                    <!-- Colors -->
+                    <div class='col-lg col-12 p-lg-0 p-3 d-flex flex-column flex-lg-row order-lg-0 order-1 justify-content-center align-items-center'>
+                        <div id='colorHolder' class='bg-warning~ s-side-imgs-holder d-flex flex-lg-column flex-row justify-content-center align-items-center '>
+                            <ng-container *ngFor='let prodColor of product.prod_colors let i = index'>
+                                <div (click)='selectColor(i); selectedColor(i)' [class.s-selected]='i == selectedColorBox' *ngIf='prodColor.prod_color' class='m-2 s-product-color'
+                                [ngStyle]="{
+                                    'background-color': prodColor.prod_color
+                                }">
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <!-- side images -->
+                    <div id='sideImageCol' class='col-lg col-12 d-flex order-lg-1 order-0 justify-content-center align-items-center'>
+                        <!-- slider holder -->
+                        <div class='s-side-imgs-holder d-flex flex-lg-column flex-row align-items-center '
+                        [class.justify-content-center]='productColorImages.length < 4'>
+                            <ng-container *ngFor='let sideImages of productColorImages let i = index'>
+                                <div (click)='selectImage(i); selectedSideImage(i)' *ngIf='sideImages.prod_side_img' [class.s-selected-image]='i == selectedImageBox' [class.s-page-opacity]='i != selectedImageBox' class='position-relative m-2 s-side-image rounded'
+                                [ngStyle]="{   
+                                    'background-image' :'url('+ prod_service.getUrl(sideImages.prod_side_img) + ')',
+                                    ' background-repeat': 'no-repeat',
+                                    'background-position': 'center',
+                                    'background-size': 'cover',
+                                    'border': 'none'
+                                }"@fade>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- arrow right [0] -->
+            <!-- <div class='col-1 d-flex order-3'>
+                <div class='s-arrow-right w-100 h-100 s-page-opacity'></div>
+            </div> -->
+        </div>
+
+        <!-- Product ((Controls))  {{ROW}} -->
+        <!-- <div class='row  s-controls-holder'> -->
+            <!-- <div class='col d-flex justify-content-center align-items-center'>
+                <div #prodBox *ngFor='let x of xs let i = index' class='d-flex justify-content-center align-items-center s-page-opacity s-prod-sliders-box s-supp-bg-3 mx-1' 
+                    [attr.data-target-box] ='i'
+                    (click)='selectProdBox(prodBox)'>
+                </div>
+            </div> -->
+        <!-- </div> -->
+    </ng-container>
+</div>

@@ -1,0 +1,72 @@
+.s-about-main-holder{
+    overflow: hidden;
+}
+.s-content-background{
+right: 0;
+top: 0;
+width: 100%;
+height: 100%;
+background-size : 600px;
+background-position: right bottom;
+background-repeat :no-repeat;
+}
+.s-section-row{
+    min-height: 100%;
+}
+.s-about-content-holder {
+  height: 100%;
+  overflow: hidden;
+}
+@media (max-width: 576px) {
+    .s-content-background{
+        background-position: center bottom;
+        
+    }
+  
+}
+@media (max-width: 992px) {
+    .s-about-main-holder {
+      overflow: scroll;
+    }
+    .s-about-content-holder {
+      height: 100%;
+      overflow: scroll;
+    }
+    .s-content-background {
+       opacity: .4;
+
+    }
+}
+.s-about-title-hr{
+    width: 30%;
+    display: inline-block;
+}
+.s-about-controller{
+    cursor: pointer;
+}
+.s-about-controller:hover{
+    opacity: 1;
+}
+.s-controllers-holder{
+    height: 100%;
+    /* right: 0; */
+    left :0;
+    top: 0;
+    z-index: 1000;
+}
+.s-about-contact-button{
+    transform: rotate(-90deg);
+    border-radius: 10px;
+}
+.s-about-contact-button:hover {
+  background-color: #FFFBA0;
+}
+.s-contact-holder-md{
+    background: inherit;
+    background-color: rgba(209, 209, 209, .95);
+    top: 62px;
+    width: 100%;
+}
+.s-x{
+    border: green;
+}

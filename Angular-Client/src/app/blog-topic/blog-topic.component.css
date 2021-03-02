@@ -1,0 +1,22 @@
+/* Header Section */
+.s-topic-img-box{
+    height: 600px;
+}
+.s-arrow-up-icon{
+    background-image: url('../../assets/Icons/blog/arrow-up.png');
+    background-size: 30px;
+}
+.s-arrow-down-icon{
+    background-image: url('../../assets/Icons/blog/arrow-down.png');
+    background-size: 30px;
+}
+.s-slider-topic-holder{
+    min-height: 150px;
+    max-height: 150px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all linear .2s;
+}
+.s-slider-topic-holder:hover{
+   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15) !important;
+}

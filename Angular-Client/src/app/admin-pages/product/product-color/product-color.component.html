@@ -1,0 +1,48 @@
+<div *ngIf="pageLoad" id='colorHolder' class=' row h-100'>
+    <!-- Colors -->
+    <div class='col-lg col-12 p-lg-0 p-3 d-flex flex-column flex-lg-row order-lg-0 order-1 justify-content-center align-items-center'>
+        <div id='colorHolder' class='bg-warning~ s-side-imgs-holder d-flex flex-lg-column flex-row justify-content-center align-items-center '>
+            <div  *ngFor='let productColor of productColors' [style.background]="productColor.prod_color ? productColor.prod_color : false" class='m-2 s-product-color s-supp-green-bg' [class.s-page-opacity]='!productColor.prod_color' [class.s-border-select]='productColor.prod_color' [class.s-selected]='colorInp == selectedColorBtn'>
+                <input title='Add Color' #colorInp type='color' class='s-product-color s-opacity-0' data-type='color-btn' value='#FFFFFF' (mouseenter)='HoverColorBtn(colorInp)' (mouseleave)='deHoverColorBtn()' (click)='fadInSideImg(sideImge); fadInColor(colorInp); newColor(colorInp); selectColorBtn(colorInp)' (change)='pickColor(productColor, colorInp.value)'>
+            </div >
+        </div>
+        <!-- delete color  -->
+        <div id='deleteColorHolder' class=' s-side-imgs-holder d-flex flex-lg-column flex-row justify-content-center align-items-center '>
+            <ng-container *ngFor='let productColor of productColors; let i = index '>
+            <button title='Delete' [class.s-opacity-0]='i != HoverColorBtnIndex || i == productColors.length-1' [class.invisible]='i == productColors.length-1' [class.s-page-opacity]='i == selectedColorBtnIndex' class='btn m-2 s-product-color-del' (click)='deleteColor()'  data-type='delete-color-btn' data-case='delete' ></button>
+            </ng-container>
+        </div>
+    </div>
+    <!-- side images -->
+    <div id='sideImageCol' class='col-lg col-12 d-flex order-lg-1 order-0 justify-content-center align-items-center'>
+        <!-- slider holder -->
+        <div *ngIf='productColors.length != 1' id='sideImgHolder' class='s-side-imgs-holder d-flex flex-lg-column flex-row align-items-center '
+            [class.justify-content-center]='productColors[selectedColorBtnIndex].prod_images.length < 3'>
+            <div #sideImageBox *ngFor='let side_img of productColors[selectedColorBtnIndex].prod_images; let i = index'
+                [ngStyle]="side_img.prod_side_img ? {   
+                    'background-image' :'url('+ pro_service.getUrl(side_img.prod_side_img) + ')',
+                    ' background-repeat': 'no-repeat',
+                    'background-position': 'center',
+                    'background-size': 'cover',
+                    'border': 'none'
+                }: false" 
+                @fade
+                data-type='side-image-showBox'
+                class='position-relative m-2 s-side-image s-page-opacity rounded' (mouseenter)='HoverSideImage(sideImageBox)' (mouseleave)='deHoverSideImage()'>
+                <input title='Add Image' #sideImge type="file" class='s-side-image s-opacity-0 rounded' data-type='side-img-inp' data-case='NEW' (change)='fadInSideImg(sideImge); newSideImg($event, sideImge); updateSideImage($event, side_img); postImg()'>
+                <!-- delete SideImage -->
+                <button title='Delete' #sideImageDelBtn [class.s-opacity-0]=' i != HoverSideImgeShowBoxIndex || i == productColors[selectedColorBtnIndex].prod_images.length-1' 
+                        [class.s-page-opacity]='i != productColors[selectedColorBtnIndex].prod_images.length-1 && i == HoverSideImgeShowBoxIndex' 
+                        [class.invisible]='i == productColors[selectedColorBtnIndex].prod_images.length-1'
+                        class='bg-danger s-side-image-delete rounded-bottom btn'
+                        [style.bottom]='selectedSideImgeDelBtn == sideImageDelBtn ? 0 : "-35px"'
+                        (mouseenter)='showDeleteSideImageBtn(sideImageDelBtn)'  (mouseleave)= hideDeleteSideImageBtn()
+                        (click)='deleteSideImage(i)'>
+                </button>
+            </div>
+        </div>
+        <div class='text-center' *ngIf='productColors.length == 1'>
+            <h3 class='text-center'>No Colors Yet !</h3>
+        </div>
+    </div>
+</div>

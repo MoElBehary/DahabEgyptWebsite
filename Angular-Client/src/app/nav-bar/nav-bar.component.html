@@ -1,0 +1,47 @@
+<!-- <section class='position-fixed'> -->
+<nav class="rtl navbar s-navbar navbar-expand-lg s-supp-bg-4 navbar-light s-dark-cr p-0 position-fixed w-100">
+  <a class="navbar-brand s-main-bgx d-lg-block d-none px-lg-5 m-0" routerLink="">دهب</a>
+  <button class="navbar-toggler ml-autox position-relative m-auto boder-0 p-3" type="button" data-toggle="collapse"
+    data-target="#navbarNav" aria-controls="navbarNav"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <!-- <span class="navbar-toggler-icon"></span> -->
+    <a class="navbar-brand s-main-bgx m-auto">دهب</a>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="pr-0 navbar-nav text-center h-100 d-flex align-items-stretch text-lg-left">
+      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" #home>
+        <a class="nav-link s-dark-cr p-3" routerLink="">الصفحة الرئيسية</a>
+      </li>
+      <li class="nav-item"  routerLinkActive="active" #about>
+        <a class="nav-link s-dark-cr p-3" routerLink="/about"> دهب مصر</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" #categories>
+        <a class="nav-link s-dark-cr p-3" routerLink="/categories" >التصنيفات</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" #products>
+        <a class="nav-link s-dark-cr p-3" routerLink="/product" >المنتجات</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" #blog>
+        <a class="nav-link s-dark-cr p-3" routerLink='/blog' >المدونة</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" #contact>
+        <a class="nav-link s-dark-cr p-3" routerLink='/contact' >تواصل معنا</a>
+      </li>
+    </ul>
+    <!-- Search input -->
+    <form class="form-inline~ my-2 mx-lg-4 my-lg-0 m-auto~">
+      <div class="input-group md-form form-sm form-2 pl-0 s-white-50-bg rounded~">
+        <div routerLink='/product' fragment="searchBAR" class="input-group-append rounded-right~">
+          <a href='/product#prodBody' class="btn input-group-text s-search-btn s-white-50-bg border-0 rounded-right~" type="submit"></a>
+        </div>
+      <input class="text-right form-control my-0 py-4 px-4 s-white-50-bg border-0 rounded-left~" type="text" placeholder="أبحث عن منتجك..."
+        aria-label="Search" [(ngModel)]='searchProd.productFromSearch' aria-label="Search" name='prodSearch'>
+      </div>
+      <!-- <input 
+      [(ngModel)]='searchProd.productFromSearch' name='prodSearch' class="form-control mr-sm-2" type="search" placeholder="أبحث عن منتجك..." aria-label="Search"> -->
+      <!-- <button routerLink='/product' class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+    </form>
+  </div>
+</nav>
+<div class='s-under-nav'></div>
+<!-- </section> -->

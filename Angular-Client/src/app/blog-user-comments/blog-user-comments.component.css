@@ -1,0 +1,35 @@
+.s-form-contact-input {
+  height: 60px;
+  /* width: 100%; */
+}
+.s-form-contact-input-icon{
+  width: 60px;
+}
+.s-form-contact-send-hr{
+   bottom: 55px;
+   right: 40px;
+   width: calc(100% - 80px);
+}
+.s-blog-post-box{
+    max-height: 300px;
+    overflow: hidden;
+}
+@media (max-width: 768px) {
+  .s-blog-post-box{
+      max-height: 500px;
+      overflow: hidden;
+  }
+}
+/* .s-blog-post-box:hover{
+    transition: all ease-in-out .1s;
+    cursor: pointer;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15) !important;
+} */
+.s-blog-post-text-box{
+    max-height: 100%;
+    width: 100%;
+    overflow: scroll;
+}
+.s-indent{
+  text-indent: 2%
+}

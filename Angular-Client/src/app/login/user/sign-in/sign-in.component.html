@@ -1,0 +1,50 @@
+<div id='signinFormHolder' class="s-dark-bg d-flex flex-column justify-content-center align-content-center">
+  <h2 class="text-center mb-5 s-supp-cr-1 s-no-outline"> Sign In </h2>
+  <div class='container'>
+    <div class='row '>
+      <div class='col d-flex justify-content-center align-content-center'>
+        <form #signInForm="ngForm" class='w-75' (ngSubmit)="signInForm.valid && onSubmit(signInForm)">
+          <!-- Email -->
+          <div class="form-group my-4">
+            <div class="input-group md-form form-sm form-2 pl-0 rounded">
+              <button disabled
+              [ngStyle]='signInForm.submitted && email.errors?.pattern || serverErrorMessages ? {
+                  "background-image" : "url(/assets/Icons/login/userRed.png)"
+                }: false'
+              class="btn input-group-text s-icon-btn s-icon-user s-no-rounded-right s-dark2-bg border-0 rounded-left"></button>
+              <input name="email" ngModel required #email="ngModel" (keyup.enter)='clickSubmit()' aria-describedby="emailHelp" type="text" [(ngModel)]="model.email" placeholder="Email" [pattern]="emailRegex"
+                required [ngClass]="{'invalid-textbox' :signInForm.submitted && !email.valid }" 
+                class='form-control s-temp-btn  my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left'
+                [class.borderRed]='email.touched && !email.valid' id="exampleInputEmail1">
+            </div>
+              <!-- err Email -->
+              <p *ngIf="signInForm.submitted && email.errors?.pattern" id="emailHelp" class="form-text text-danger my-3 mx-5">Invalid email address</p>
+          </div>
+          <!-- Password -->
+          <div class="form-group mb-4">
+            <div class="input-group md-form form-sm form-2 pl-0 rounded">
+              <button disabled
+                [ngStyle]='signInForm.submitted && password.errors?.minlength || serverErrorMessages ? {
+                  "background-image" : "url(/assets/Icons/login/passwordRed.png)"
+                }: false'
+              class="btn input-group-text s-icon-btn s-icon-password s-no-rounded-right s-dark2-bg border-0 rounded-left"></button>
+              <input  name="password" ngModel required #password="ngModel" (keyup.enter)='clickSubmit()' type="password" [(ngModel)]="model.password" placeholder="Password"
+                [class.borderRed]='password.touched && !password.valid' id="exampleInputEmail1"
+                required minlength="4" 
+                class='form-control s-temp-btn my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left'
+                [ngClass]="{'invalid-textbox' :signInForm.submitted && !password.valid }">
+            </div>
+              <!-- err Password -->
+              <p *ngIf="signInForm.submitted && password.errors?.minlength" id="emailHelp" class="form-text text-danger my-3 mx-5">Minimum 4 characters.</p>
+              <p class="alert form-text text-danger my-3 mx-" *ngIf="serverErrorMessages">{{serverErrorMessages}}</p>
+            <!-- <div *ngIf="signInForm.submitted && password.errors?.minlength">
+              <label class="validation-message">Minimum 4 characters.</label>
+            </div> -->
+          </div>
+          <!-- submit -->
+          <input [disabled]='signInForm.invalid' id='submitLogin' type="submit" value="Sign In" class='btn my-3 s-main-bg s-dark-cr rounded btn-lg s-submit w-100'>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,110 @@
+<div id='contentHolder' class='rtl container-fluid px-0 px-lg-4x s-about-main-holder s-supp-bg-3 position-relative'>
+    <div *ngIf='aboutSections' id='aboutHolder' class=' container-fluid p-0 s-about-content-holder'>
+        <!-- History Seciton -->
+        <section *ngIf='aboutSections[0]' id='history' class='row p-md-5 p-3 position-relative s-section-row'>
+          <div id='conentBgImage' data-section='image' class='s-content-background position-absolute'
+          [ngStyle]="{
+             'background-image': 'url('+ pagesImgs_service.getUrl(aboutSections[0].page_backgroundImage) + ')'
+          }"
+          ></div>
+          <div class='col-lg-8 col ml-lg-5 text-lg-right text-center pt-5 mt-5'>
+            <p id='contentTitle' data-section='title' class='display-3 ml-lg-5'>{{aboutSections[0].page_title}}</p>
+            <hr class='s-about-title-hr ml-lg-5'>
+            <p id='contentArt' data-section='article' class='ml-lg-5 lead s-aabout-art pl-lg-5 pl-0'>
+              {{aboutSections[0].page_article}}
+            </p>
+          </div>
+        </section>
+        <!-- Mission Section -->
+        <section *ngIf='aboutSections[1]' id='mission' class='row p-md-5 p-3 position-relative s-section-row'>
+          <div id='conentBgImagex' data-section='image' class='s-content-background position-absolute'
+          [ngStyle]="{
+             'background-image': 'url('+ pagesImgs_service.getUrl(aboutSections[1].page_backgroundImage) + ')'
+          }"
+          ></div>
+          <div class='col-lg-8 col ml-lg-5 text-lg-right text-center pt-5 mt-5'>
+            <p id='contentTitle' data-section='title' class='display-3 ml-lg-5'>{{aboutSections[1].page_title}}</p>
+            <hr class='s-about-title-hr ml-lg-5'>
+            <p id='contentArt' data-section='article' class='ml-lg-5 lead s-aabout-art pl-lg-5 pl-0'>
+             {{aboutSections[1].page_article}}
+            </p>
+          </div>
+        </section>
+        <!-- Vission Section -->
+        <section *ngIf='aboutSections[2]' id='vission' class='row p-md-5 p-3 position-relative s-section-row'>
+          <div id='conentBgImagex' data-section='image' class='s-content-background position-absolute'
+          [ngStyle]="{
+             'background-image': 'url('+ pagesImgs_service.getUrl(aboutSections[2].page_backgroundImage) + ')'
+          }"
+          ></div>
+          <div class='col-lg-8 col ml-lg-5 text-lg-right text-center pt-5 mt-5'>
+            <p id='contentTitle' data-section='title' class='display-3 ml-lg-5'>{{aboutSections[2].page_title}}</p>
+            <hr class='s-about-title-hr ml-lg-5'>
+            <p id='contentArt' data-section='article' class='ml-lg-5 lead s-aabout-art pl-lg-5 pl-0'>
+              {{aboutSections[2].page_article}}
+            </p>
+          </div>
+        </section>
+        <!-- Team Section -->
+        <!-- <section *ngIf='aboutSections[3]' id='team' class='row p-md-5 p-3 position-relative s-section-row'>
+          <div class='col-lg-8 col ml-lg-5 text-lg-left text-center pt-5 mt-5'>
+            <p id='contentTitle' data-section='title' class='display-3 ml-lg-5'>Team</p>
+            <hr class='s-about-title-hr ml-lg-5'>
+            <p id='contentArt' data-section='article' class='ml-lg-5 lead s-aabout-art pl-lg-5 pl-0'>
+              none
+            </p>
+          </div>
+        </section> -->
+    </div>
+    <!-- controllers {{LG}} -->
+    <div class=' s-controllers-holder position-absolute d-lg-flex d-none flex-column align-items-center justify-content-center pb-5'>
+        <!-- Sochial Media -->
+        <div *ngIf='isLoaded' class=''>
+        <a *ngIf='socialMedia[0].facebook' class=' d-block mt-3' [href]="socialMedia[0].facebook"><img width='25'
+            src="/assets/Icons/contact-icons/fb.png" alt=""></a>
+        <a *ngIf='socialMedia[2].instagram' class=' d-block mt-3' [href]="socialMedia[2].instagram"><img width='25'
+            src="/assets/Icons/contact-icons/insta.png" alt=""></a>
+      <a *ngIf='socialMedia[4].telegram' class=' d-block mt-3' [href]="socialMedia[4].telegram"><img width='22'
+          src="/assets/Icons/contact-icons/telegram.png" alt=""></a>
+          <a *ngIf='socialMedia[5].whatsapp[0]' (click)='openWhatsappMenu()' class=' d-block mt-3'><img width='26' src="/assets/Icons/contact-icons/whatsapp.png" alt=""></a>
+        </div>
+        <!-- Controllers Switchers -->
+        <div id='contentControllers' class='my-4'>
+        <img id='onUpSlider' #onUp (click)=' upAndDownSlider(onUp)' data-content-at='0'
+            class='d-block s-about-controller my-3' width='25' src="/assets/Icons/about icons/arrow-up.png" alt="">
+        <img #onHistory (click)='sectionsBtns(onHistory)' data-content='0' class='d-block s-about-controller my-3'
+            width='25' src="/assets/Icons/about icons/circle.png" alt="">
+        <img #onMission (click)='sectionsBtns(onMission)' data-content='1'
+            class='d-block s-about-controller s-opc-5 my-3' width='25' src="/assets/Icons/about icons/circle.png"
+            alt="">
+        <img #onVission (click)='sectionsBtns(onVission)' data-content='2'
+            class='d-block s-about-controller s-opc-5 my-3' width='25' src="/assets/Icons/about icons/circle.png"
+            alt="">
+        <!-- <img #onTeam (click)='sectionsBtns(onTeam)' data-content='3' class='d-block s-about-controller s-opc-5 my-3'
+            width='25' src="/assets/Icons/about icons/circle.png" alt=""> -->
+        <img id='onDownSlider' #onDown (click)='upAndDownSlider(onDown)' data-content-at='0'
+            class='d-block s-about-controller my-3' width='25' src="/assets/Icons/about icons/arrow-down.png" alt="">
+        </div>
+        <!-- Contact Us Button -->
+        <div class='s-about-contact-button light-yellow-bg px-2 py-1 mt-5'>
+        <a class=' s-supp-cr-1 py-1 px-4 text-nowrap' routerLink='/contact'>تواصل معنا</a>
+        </div>
+    </div>
+    <!-- controllers {{MD}} -->
+    <div class=' s-supp-bg-3 position-fixed s-contact-holder-md py-4 px-5  d-lg-none d-block'>
+      <!-- Sochial Media -->
+      <div *ngIf='isLoaded' class='float-right'>
+          <a *ngIf='socialMedia[0].facebook' class=' m-2' [href]="socialMedia[0].facebook"><img width='25'
+              src="/assets/Icons/contact-icons/fb.png" alt=""></a>
+          <a *ngIf='socialMedia[2].instagram' class=' m-2' [href]="socialMedia[2].instagram"><img width='25'
+              src="/assets/Icons/contact-icons/insta.png" alt=""></a>
+          <a *ngIf='socialMedia[4].telegram' class=' m-2' [href]="socialMedia[4].telegram"><img width='22'
+              src="/assets/Icons/contact-icons/telegram.png" alt=""></a>
+          <a *ngIf='socialMedia[5].whatsapp[0]' (click)='openWhatsappMenu()' class=' m-2'><img width='26'
+              src="/assets/Icons/contact-icons/whatsapp.png" alt=""></a>
+          <p class='lead d-none d-md-block m-0 float-right px-4 s-supp-cr-1'>تواصل معنا عبر شبكات التواصل الاجتماعي</p>
+      </div>
+    </div>
+    <!-- whatsappMenu -->
+      <app-whatsapp-menu></app-whatsapp-menu>
+</div>

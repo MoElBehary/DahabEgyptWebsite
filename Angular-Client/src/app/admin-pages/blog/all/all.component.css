@@ -1,0 +1,100 @@
+.s-side-image{
+    /* border: 4px dashed rgba(152, 155, 155, 1); */
+    min-width : 230px ;
+    min-height : 230px ;
+    background-image: url('/assets/Icons/admin-products/noImge.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 40px;
+    animation-duration: 2s;
+    animation-delay: .1s;
+    animation-iteration-count: 1;
+    overflow: hidden;
+}
+.s-side-image:hover {
+  cursor: pointer;
+}
+.s-blog-post-box{
+    max-height: 300px;
+    overflow: hidden;
+}
+@media (max-width: 768px) {
+  .s-blog-post-box{
+      max-height: 500px;
+      overflow: hidden;
+  }
+}
+.s-blog-post-box:hover{
+    transition: all ease-in-out .1s;
+    cursor: pointer;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15) !important;
+}
+.s-blog-post-text-box{
+    max-height: 100%;
+    width: 100%;
+    overflow: scroll;
+}
+.s-create-one-btn:hover{
+    background-color: #5CD557;
+}
+/*  */
+.s-dash{
+  width: 18px;
+  height: 100%;
+  opacity: .8;
+}
+.s-dash-right{
+  right:0;
+  top: 0;
+  width: 18px;
+  height: 100%;
+  opacity: .8;
+}
+.s-dash-right-2{
+  right:15px;
+  top: 0;
+  width: 18px;
+  height: 100%;
+  opacity: .8;
+}
+.s-categories-holder{
+ width: 100%;
+ height: 48px;
+ overflow-x: scroll; 
+ overflow-y: hidden;
+}
+.s-categories-btns{
+   white-space: nowrap;
+   text-align: center;
+}
+.s-categories-btns:hover{
+  background-color: #FFFBA0;
+}
+.s-serach-bar{
+   border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+.s-search-btn{
+    width: 60px;
+    /* height: 30px; */
+    background-image: url('/assets/Icons/admin-products/serach.png');
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.s-selected-categ-btns{
+  white-space: nowrap;
+   text-align: center;
+ height: 48px;
+ border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+.s-selected-tag-btn{
+  background-color:#FFFDCF;
+  color: #222222;
+}
+.s-tool-bar-holder{
+  top: 56px;
+  z-index: 4000;
+  opacity: .97;
+}

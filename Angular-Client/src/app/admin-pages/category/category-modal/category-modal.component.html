@@ -1,0 +1,80 @@
+<!-- Button trigger modal -->
+<app-notifications class='position-relative s-make-me-up'></app-notifications>
+<button id='modalOpenBtn' type="button" class="btn btn-primary d-none" data-toggle="modal"
+    data-target="#categModal">
+</button>
+<!-- Modal -->
+<div class="modal fade" id="categModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered " role="document">
+        <!-- Content -->
+        <div class="modal-content rounded s-dark2-bg">
+            <!-- Header -->
+            <div class="modal-header border-0 s-dark-bg rounded-top shadow-sm d-flex align-items-center p-4">
+                <h3 *ngIf='!selectedCategory' class='text-center m-auto s-supp-cr-1'>Add Category</h3>
+                <h3 *ngIf='selectedCategory' class='text-center m-auto s-supp-cr-1'>Update Category</h3>
+            </div>
+            <div class='s-modal-holder'>
+                <!-- Body -->
+                <form #f="ngForm"  class='w-100'>
+                    <div class="modal-body d-flex flex-wrap justify-content-center align-items-center p-5">
+                    <!-- form -->
+                        <div class='col-lg col-12 d-flex flex-column justify-content-cente order-lg-0 order-1 my-lg-0 my-5'>
+                                <input id='categNameInp' ngModel required #categoryNameInp="ngModel" name='categoryNameInp'
+                                    [class.borderRed]="categoryNameInp.touched && !categoryNameInp.valid"
+                                    class="form-control my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded" [value]="selectedCategory ? selectedCategory.categ_name :''" type="text" placeholder="Category Name">
+                                <!-- Sub Categories -->
+                                <button class='btn my-3 s-green-bg s-white-cr rounded btn-lg s-sub-categ-btn' (click)='openSubCategMenu(selectedCategory ? selectedCategory.categ_name : categoryNameInp.value) ;showSubCategOfCateg(selectedCategory)'>Sub Categories</button>
+                                <app-sub-categories></app-sub-categories>
+                                <!-- butns -->
+                                <div class='row'>
+                                    <!-- Cancel if New -->
+                                    <div *ngIf='!selectedCategory' class='col pr-0'>
+                                        <button type="button" class="btn rounded w-100 mt-5 s-cancel-btn s-supp-cr-1 btn-lg" (click)='removeModalContent(categoryNameInp, categoryImageInp)' data-dismiss="modal">Cancel</button>      
+                                    </div>
+                                    <!-- Delete -->
+                                    <div *ngIf='selectedCategory' class='col pr-0'>
+                                        <button type="button" class="btn rounded w-100 mt-5 s-delete-btn s-supp-cr-1 s-dark2-cr btn-lg"
+                                            (click)="deleteCategory(selectedCategory._id, selectedCategory.categ_image); removeModalContent(categoryNameInp, categoryImageInp)"
+                                            data-dismiss="modal">Delete</button>
+                                    </div>
+                                    <!-- Save -->
+                                    <div *ngIf='!selectedCategory' class='col pl-3'>
+                                        <button type="button" class="btn rounded w-100 mt-5 s-save-btn s-main-bg s-dark2-cr btn-lg"
+                                        [disabled]='f.invalid'
+                                        (click)="postNewCategory(categoryNameInp.value, categoryImageInp.value); removeModalContent(categoryNameInp, categoryImageInp); postCategImg()" data-dismiss="modal" >Save</button>
+                                    </div>
+                                    <!-- Update -->
+                                    <div *ngIf='selectedCategory' class='col pl-3'>
+                                        <button type="button" class="btn rounded w-100 mt-5 s-save-btn s-main-bg s-dark2-cr btn-lg"
+                                        [disabled]='f.invalid'
+                                        (click)="updateCategory(selectedCategory._id, categoryNameInp.value, categoryImageInp.value, selectedCategory.categ_image); removeModalContent(categoryNameInp, categoryImageInp); postCategImg()" data-dismiss="modal" >Update</button>
+                                    </div>
+                                    <!-- Cancel if Update or Delete -->
+                                    <div *ngIf='selectedCategory' class='col-12 mt-3'>
+                                        <button type="button" class="btn rounded w-100 s-cancel-btn s-supp-cr-1 btn-lg" (click)='removeModalContent(categoryNameInp, categoryImageInp)'
+                                            data-dismiss="modal">Cancel</button>
+                                    </div>
+                                </div>
+                        </div>
+                        <!-- image -->
+                        <div class='col-lg col-12 d-flex justify-content-center order-lg-1 order-0 px-lg-4 py-lg-5 px-0 py-5'>
+                                <div class='position-relative m-2 s-category-image s-page-opacity rounded'
+                                    [ngStyle]="imgURL ? {   
+                                    'background-image' :'url('+ imgURL + ')',
+                                    ' background-repeat': 'no-repeat',
+                                    'background-position': 'center',
+                                    'background-size': 'cover',
+                                    'border': 'none'
+                                    }: false" >
+                                    <input
+                                        ngModel [required]='!selectedCategory' #categoryImageInp="ngModel" name='categoryImageInp'
+                                        id='categImageInp' title='Add Image' type="file" class='s-category-image s-opacity-0 rounded' (change)='readURL($event); selectImage($event)'>
+                                </div>
+                        </div>
+                    </div>
+                    <input class=d-none id=resetForm (click)='f.reset()'>
+                </form>
+        </div>
+    </div>
+</div>

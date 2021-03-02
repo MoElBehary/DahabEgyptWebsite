@@ -1,0 +1,92 @@
+/* Side imgs */
+.s-side-imgs-holder{
+    height: 350px;
+    width: auto;
+    overflow: scroll;
+}
+.s-product-color{
+    cursor: pointer;
+    border-radius: 50%;
+    min-width: 30px !important;
+    min-height: 30px !important;
+    max-width: 30px !important;
+    max-height: 30px !important;
+    background-image: url('/assets/Icons/admin-products/add.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 15px;
+    animation-duration: 2s;
+    animation-delay: .1s;
+    animation-iteration-count: 1;
+}
+.s-page-opacity{
+    cursor: pointer;
+    transition: all ease-in-out .1s;
+    opacity: .6 !important;
+}
+.s-page-opacity:hover {
+    cursor: pointer;
+    transition: all ease-in-out .1s;
+    opacity: 1 !important;
+}
+.s-product-color-del{
+    border-radius: 50%;
+    min-width: 30px !important;
+    min-height: 30px !important;
+    max-width: 30px !important;
+    max-height: 30px !important;
+    background-image: url('/assets/Icons/admin-products/delete.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    opacity: .1;
+    transition: all ease-in-out .1s;
+}
+.s-side-image{
+    border: 4px dashed rgba(152, 155, 155, 1);
+    min-width: 100px !important;
+    min-height: 100px !important;
+    max-width: 100px !important;
+    max-height: 100px !important;
+    background-image: url('/assets/Icons/admin-products/addNewImg.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 30px;
+    animation-duration: 2s;
+    animation-delay: .1s;
+    animation-iteration-count: 1;
+    overflow: hidden;
+}
+.s-side-image:hover {
+  border: 4px dashed #989B9B;
+  cursor: pointer;
+
+}
+.s-side-image-delete{
+    position: absolute;
+    /* bottom: -20px; */
+    bottom: -35px;
+    left: 0;
+    height: 60px;
+    width: 100%;
+    background-image: url('/assets/Icons/admin-products/delete-light.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    border-radius: 0;
+}
+.s-selected{
+    border: 2px solid #FFFBA0 !important;
+    /* box-shadow: 0px 0px 4px 1px black !important; */
+}
+.s-border-select:hover {
+    border: 2px solid #FFFBA0 !important;
+    opacity: .8;
+}
+@media (max-width: 991px) {
+    .s-side-imgs-holder {
+      height: auto;
+      width: 350px;
+      overflow: scroll;
+    }
+}

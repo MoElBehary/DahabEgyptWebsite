@@ -1,0 +1,59 @@
+<!-- <section class='position-fixed'> -->
+<nav
+    class="navbar s-navbar navbar-expand-lg s-dark2-bg navbar-light s-dark-cr p-0 position-fixed w-100">
+    <a class="navbar-brand s-main-bgx d-lg-block d-none px-lg-5 m-0" routerLink="/admin">LOGO</a>
+    <button class="navbar-toggler ml-autox position-relative m-auto boder-0 p-3" type="button" data-toggle="collapse"
+        data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <!-- <span class="navbar-toggler-icon"></span> -->
+        <a class="navbar-brand s-main-bgx m-auto">LOGO</a>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav text-center text-lg-left w-100">
+            <li class="nav-item" routerLinkActive='active' [routerLinkActiveOptions]="{ exact: true }">
+                <a class="nav-link s-supp-cr-1 p-3 " routerLink="/admin">DASHBOARD</a>
+            </li>
+            <li class="nav-item" routerLinkActive='active'>
+                <a class="nav-link s-supp-cr-1 p-3 " routerLink="/admin/categories">CATEGORIES</a>
+            </li>
+            <li class="nav-item" routerLinkActive='active'>
+                <a class="nav-link s-supp-cr-1 p-3 " routerLink="/admin/products">PRODUCTS</a>
+            </li>
+            <li class="nav-item" routerLinkActive='active'>
+                <a class="nav-link s-supp-cr-1 p-3 " routerLink="/admin/blog/all">BLOG</a>
+            </li>
+            <!-- Dropdown -->
+            <li class="nav-item dropdown" routerLinkActive='active'>
+                <a class="nav-link dropdown-toggle s-supp-cr-1 p-3" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    PAGES
+                </a>
+                <div class="dropdown-menu s-dark2-bg " aria-labelledby="navbarDropdown">
+                    <li class="nav-item" routerLinkActive='active'>
+                        <a class="nav-link text-center s-supp-cr-1 p-3" routerLink="/admin/home">HOME</a>
+                    </li>
+                    <li class="nav-item" routerLinkActive='active'>
+                        <a class="nav-link text-center s-supp-cr-1 p-3" routerLink='/admin/about'>ABOUT</a>
+                    </li>
+                    <li class="nav-item" routerLinkActive='active'>
+                        <a class="nav-link text-center s-supp-cr-1 p-3" routerLink='/admin/category-page'>CATEGORY</a>
+                    </li>
+                    <li class="nav-item" routerLinkActive='active'>
+                        <a class="nav-link text-center s-supp-cr-1 p-3" routerLink='/admin/product-page'>PRODUCT</a>
+                    </li>
+                    <li class="nav-item" routerLinkActive='active'>
+                        <a class="nav-link text-center s-supp-cr-1 p-3" routerLink='/admin/contact'>CONTACT</a>
+                    </li>
+                </div>
+            </li>
+            <!-- Logout -->
+            <li data-toggle="collapse" data-target="#navbarNav"  class="ml-lg-auto mr-lg-5 d-flex align-items-center">
+                <div (click)='onLogout()' class="input-group md-form form-sm form-2 pl-0 rounded">
+                    <button class="btn s-logout-btn input-group-text s-icon-btn s-icon-logout s-no-rounded-right s-dark-bg border-0 rounded-left"></button>
+                    <button class="nav-item nav-link s-logout-btn s-white-cr form-control s-temp-btn  my-0  px-3 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left">Logout | <span class='text-uppercase s-supp-cr-1'>{{userName}}</span></button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class='s-under-nav'></div>
+<!-- </section> -->

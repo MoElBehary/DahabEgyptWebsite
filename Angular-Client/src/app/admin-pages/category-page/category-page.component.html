@@ -1,0 +1,220 @@
+<div id='categoryHolder' class='container-fluid s-dark-bg p-4 d-flex flex-column'>
+    <app-notifications class='position-relative s-make-me-up'></app-notifications>
+    <div class='container'>
+        <!-- Head -->
+        <div class='row'>
+            <div class='col'>
+                <p class='h1 pt-4 px-5 s-supp-cr-2 text-uppercase text-lg-left text-center'>category <span
+                        class='h3 text-capitalize s-supp-cr-1'>Page</span></p>
+                <hr class='s-dark2-bg mx-5 my-4'>
+            </div>
+        </div>
+        <!-- Body -->
+        <div *ngIf='isLoaded' class='row'>
+            <div class='col'>
+                <!-- navigation -->
+                <p class="nav-link s-supp-cr-1 lead m-0 pb-4 d-block d-lg-none text-center">SECTIONS</p>
+                <ul class="px-5 nav nav-pills mb-3 s-dark2-bg d-flex flex-row align-items-center py-4 px-0 rounded-top justify-content-lg-start justify-content-center"
+                    id="pills-tab" role="tablist">
+                    <li class="nav-item mr-5 d-lg-block d-none">
+                        <p class="nav-link s-supp-cr-1 lead m-0">SECTIONS</p>
+                    </li>
+                    <li *ngFor='let title of sectionTitles let i = index' class="nav-item mx-2">
+                        <a class="nav-link s-temp-btn  btn rounded s-nav-btns s-supp-cr-4" [class.active]='i == 0'
+                            [attr.aria-selected]="i == 0 ? true : false" id="pills-home-tab" data-toggle="pill"
+                            [href]="'#tab-' + title" role="tab" [attr.aria-controls]="title">{{title}}</a>
+                    </li>
+                </ul>
+                <!-- From Control -->
+                <form #f="ngForm" class='w-100' action="">
+                    <div class="tab-content s-dark2-bg rounded-bottom p-4 s-supp-cr-4" id="pills-tabContent">
+                        <!-- Slider Section -->
+                        <div class="tab-pane fade show mx-lg-5 mx-2 active pb-4" [attr.id]="'tab-' + sectionTitles[0]"
+                            role="tabpanel" [attr.aria-labelledby]="'pills-'+ sectionTitles[0] +'-tab'">
+                            <!-- Slide 1 InSec -->
+                            <div class='my-2'>
+                                <!-- Section Background image -->
+                                <label class='my-2 s-supp-cr-1' for="">Slide 1</label>
+                                <!-- section Background Image Inp -->
+                                <div class="input-group md-form form-sm form-2 pl-0 rounded mb-3">
+                                    <i disabled
+                                        class="btn input-group-text s-icon-btn s-icon-image s-no-rounded-right s-dark-bg border-0 rounded-left"></i>
+                                    <input (click)='sectionImage(slide1Img)' type="text"
+                                        name="Section Background Image1" placeholder="Image" required readonly
+                                        class='s-img-inp form-control s-temp-btn my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left'
+                                        [(ngModel)]='category_page_service.data[0].page_slides[0].slide_image'
+                                        [class.borderRed]="slide1ImgPreview.touched && !slide1ImgPreview.valid"
+                                        #slide1ImgPreview="ngModel">
+                                    <input (change)='selectImage($event, 0, "slider")'
+                                        (click)='oldImgValue(slide1ImgPreview.value, 0)' #slide1Img type="file"
+                                        class='d-none'>
+                                </div>
+                                <!-- section text -->
+                                <div class="input-group md-form form-sm form-2 pl-0 rounded mb-3">
+                                    <i disabled
+                                        class="btn input-group-text s-icon-btn s-icon-art s-no-rounded-right s-dark-bg border-0 rounded-left"></i>
+                                    <textarea [(ngModel)]='category_page_service.data[0].page_slides[0].slide_text'
+                                        name="sectionArt" #sectionArt="ngModel"
+                                        class="form-control my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left"
+                                        placeholder="Type Here The Slid Text..." rows="2"></textarea>
+                                </div>
+                            </div>
+                            <!-- Slide 2 InSec -->
+                            <div class='my-2'>
+                                <!-- Section Background image -->
+                                <label class='my-2 s-supp-cr-1' for="">Slide 2</label>
+                                <!-- section Background Image Inp -->
+                                <div class="input-group md-form form-sm form-2 pl-0 rounded mb-3">
+                                    <i disabled
+                                        class="btn input-group-text s-icon-btn s-icon-image s-no-rounded-right s-dark-bg border-0 rounded-left"></i>
+                                    <input (click)='sectionImage(slide2Img)' type="text"
+                                        name="Section Background Image2" placeholder="Image" required readonly
+                                        class='s-img-inp form-control s-temp-btn my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left'
+                                        [(ngModel)]='category_page_service.data[0].page_slides[1].slide_image'
+                                        [class.borderRed]="slide2ImgPreview.touched && !slide2ImgPreview.valid" required
+                                        #slide2ImgPreview="ngModel">
+                                    <input (change)='selectImage($event, 1, "slider")'
+                                        (click)='oldImgValue(slide2ImgPreview.value, 1)' #slide2Img type="file"
+                                        class='d-none'>
+                                </div>
+                                <!-- section text -->
+                                <div class="input-group md-form form-sm form-2 pl-0 rounded mb-3">
+                                    <i disabled
+                                        class="btn input-group-text s-icon-btn s-icon-art s-no-rounded-right s-dark-bg border-0 rounded-left"></i>
+                                    <textarea [(ngModel)]='category_page_service.data[0].page_slides[1].slide_text'
+                                        name="sectionArt2" #sectionArt2="ngModel"
+                                        class="form-control my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left"
+                                        placeholder="Type Here The Slid Text..." rows="2"></textarea>
+                                </div>
+                            </div>
+                            <!-- Slide 3 InSec -->
+                            <div class='my-2'>
+                                <!-- Section Background image -->
+                                <label class='my-2 s-supp-cr-1' for="">Slide 3</label>
+                                <!-- section Background Image Inp -->
+                                <div class="input-group md-form form-sm form-2 pl-0 rounded mb-3">
+                                    <i disabled
+                                        class="btn input-group-text s-icon-btn s-icon-image s-no-rounded-right s-dark-bg border-0 rounded-left"></i>
+                                    <input (click)='sectionImage(slide3Img)' type="text"
+                                        name="Section Background Image3" placeholder="Image" required readonly
+                                        class='s-img-inp form-control s-temp-btn my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left'
+                                        [(ngModel)]='category_page_service.data[0].page_slides[2].slide_image'
+                                        [class.borderRed]="slide3ImgPreview.touched && !slide3ImgPreview.valid" required
+                                        #slide3ImgPreview="ngModel">
+                                    <input (change)='selectImage($event, 2, "slider")'
+                                        (click)='oldImgValue(slide3ImgPreview.value, 2)' #slide3Img type="file"
+                                        class='d-none'>
+                                </div>
+                                <!-- section text -->
+                                <div class="input-group md-form form-sm form-2 pl-0 rounded mb-3">
+                                    <i disabled
+                                        class="btn input-group-text s-icon-btn s-icon-art s-no-rounded-right s-dark-bg border-0 rounded-left"></i>
+                                    <textarea [(ngModel)]='category_page_service.data[0].page_slides[2].slide_text'
+                                        name="sectionArt3" #sectionArt3="ngModel"
+                                        class="form-control my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left"
+                                        placeholder="Type Here The Slid Text..." rows="2"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Hot Section -->
+                        <div class="tab-pane fade show mx-lg-5 mx-2 pb-4" [attr.id]="'tab-' + sectionTitles[1]"
+                            role="tabpanel" [attr.aria-labelledby]="'pills-'+ sectionTitles[1] +'-tab'">
+                            <!-- hot 1 InSec -->
+                            <div class='my-2'>
+                                <!-- Section Background image -->
+                                <label class='my-2 s-supp-cr-1' for="">Large Hot Box</label>
+                                <!-- section Background Image Inp -->
+                                <div class="input-group md-form form-sm form-2 pl-0 rounded mb-3">
+                                    <i disabled
+                                        class="btn input-group-text s-icon-btn s-icon-image s-no-rounded-right s-dark-bg border-0 rounded-left"></i>
+                                    <input (click)='sectionImage(largBox)' type="text" name="section hot img1" required
+                                        #largBoxPreview="ngModel"
+                                        [class.borderRed]="largBoxPreview.touched && !largBoxPreview.valid"
+                                        placeholder="Image" readonly
+                                        class='s-img-inp form-control s-temp-btn my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left'
+                                        [(ngModel)]='category_page_service.data[0].page_hot_sec[0].box_image'>
+                                    <input (change)='selectImage($event, 0, "hot")'
+                                        (click)='oldImgValue(largBoxPreview.value, 0)' #largBox type="file"
+                                        class='d-none'>
+                                </div>
+                                <!-- Category Name -->
+                                <div class="input-group md-form form-sm form-2 pl-0 rounded mb-3">
+                                    <i disabled
+                                        class="btn input-group-text s-icon-btn s-icon-category-id s-no-rounded-right s-dark-bg border-0 rounded-left"></i>
+                                    <input type="text" placeholder="Category Name" name="Section Title1" required
+                                        #categName1="ngModel"
+                                        [class.borderRed]="categName1.touched && !categName1.valid"
+                                        [(ngModel)]='category_page_service.data[0].page_hot_sec[0].box_name'
+                                        class='form-control s-temp-btn  my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left'>
+                                </div>
+                            </div>
+                            <!-- hot 2 InSec -->
+                            <div class='my-2'>
+                                <!-- Section Background image -->
+                                <label class='my-2 s-supp-cr-1' for="">Small Hot Box 1</label>
+                                <!-- section Background Image Inp -->
+                                <div class="input-group md-form form-sm form-2 pl-0 rounded mb-3">
+                                    <i disabled
+                                        class="btn input-group-text s-icon-btn s-icon-image s-no-rounded-right s-dark-bg border-0 rounded-left"></i>
+                                    <input (click)='sectionImage(smallBox1)' type="text" name="Ssection hot img2"
+                                        required #smallBox1Preview="ngModel"
+                                        [class.borderRed]="smallBox1Preview.touched && !smallBox1Preview.valid"
+                                        placeholder="Image" readonly
+                                        class='s-img-inp form-control s-temp-btn my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left'
+                                        [(ngModel)]='category_page_service.data[0].page_hot_sec[1].box_image'>
+                                    <input (change)='selectImage($event, 1, "hot")' #smallBox1
+                                        (click)='oldImgValue(smallBox1Preview.value, 1)' type="file" class='d-none'>
+                                </div>
+                                <!-- Category Name -->
+                                <div class="input-group md-form form-sm form-2 pl-0 rounded mb-3">
+                                    <i disabled
+                                        class="btn input-group-text s-icon-btn s-icon-category-id s-no-rounded-right s-dark-bg border-0 rounded-left"></i>
+                                    <input type="text" placeholder="Category Name" name="Section Title2" required
+                                        #categName2="ngModel"
+                                        [class.borderRed]="categName2.touched && !categName2.valid"
+                                        [(ngModel)]='category_page_service.data[0].page_hot_sec[1].box_name'
+                                        class='form-control s-temp-btn  my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left'>
+                                </div>
+                            </div>
+                            <!-- hot 3 InSec -->
+                            <div class='my-2'>
+                                <!-- Section Background image -->
+                                <label class='my-2 s-supp-cr-1' for="">Small Hot Box 2</label>
+                                <!-- section Background Image Inp -->
+                                <div class="input-group md-form form-sm form-2 pl-0 rounded mb-3">
+                                    <i disabled
+                                        class="btn input-group-text s-icon-btn s-icon-image s-no-rounded-right s-dark-bg border-0 rounded-left"></i>
+                                    <input (click)='sectionImage(smallBox2)' type="text" name="Section Background Image"
+                                        name="section hot img3" required #smallBox2Preview="ngModel"
+                                        [class.borderRed]="smallBox2Preview.touched && !smallBox2Preview.valid"
+                                        placeholder="Image" readonly
+                                        class='s-img-inp form-control s-temp-btn my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left'
+                                        [(ngModel)]='category_page_service.data[0].page_hot_sec[2].box_image'>
+                                    <input (change)='selectImage($event, 2, "hot")'
+                                        (click)='oldImgValue(smallBox2Preview.value, 2)' #smallBox2 type="file"
+                                        class='d-none'>
+                                </div>
+                                <!-- Category Name -->
+                                <div class="input-group md-form form-sm form-2 pl-0 rounded mb-3">
+                                    <i disabled
+                                        class="btn input-group-text s-icon-btn s-icon-category-id s-no-rounded-right s-dark-bg border-0 rounded-left"></i>
+                                    <input type="text" placeholder="Category Name" required name="Section Title3"
+                                        required #categName3="ngModel"
+                                        [class.borderRed]="categName3.touched && !categName3.valid"
+                                        [(ngModel)]='category_page_service.data[0].page_hot_sec[2].box_name'
+                                        class='form-control s-temp-btn  my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left'>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Save -->
+                    <div
+                        class="input-group md-form form-sm form-2 pl-0 d-flex justify-content-lg-end justify-content-center pt-5">
+                        <button (click)='updateData(); postImg(); deleteImg()' [disabled]='f.invalid'
+                            class='btn s-btn-tem-h s-save-btn mx-1 px-5 input-group-text border-0 s-supp-bg-1-opt5 s-main-cr rounded'>Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

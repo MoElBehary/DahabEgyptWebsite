@@ -1,0 +1,30 @@
+.s-make-me-up{
+    z-index: 4000;
+}
+.s-submit:hover{
+    transition: all ease-in-out .2s;
+    background-color:#FFFDCF;
+}
+.s-icon-btn{
+    width: 60px;
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.s-icon-user{
+     background-image: url('/assets/Icons/login/user.png');
+}
+.s-icon-email{
+     background-image: url('/assets/Icons/login/email.png');
+}
+.s-icon-password{
+     background-image: url('/assets/Icons/login/password.png');
+}
+.s-no-rounded-right{
+   border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+.s-no-rounded-left{
+   border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}

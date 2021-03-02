@@ -1,0 +1,199 @@
+<div id='productsHolder' class='container-fluid s-dark-bg p-4 d-flex flex-column'>
+    <app-notifications></app-notifications>
+    <app-product-menu (selectProductId)='getProductById($event)'></app-product-menu>
+    <!-- Product ((Name)) {{ROW}} -->
+    <div class='row justify-content-center p-lg-5 p-4'>
+        <div class='col-lg-4 col-md-6 col'>
+            <input id='productNameInp' #productNameInp title='Procuct Name' class='text-center p-3 h4 s-product-named-inp s-no-border s-supp-cr-1' type="text"
+                placeholder='Product Name' [value]='product.prod_name ? product.prod_name : ""'>
+        </div>
+    </div>
+    <!-- Product ((Info)) {{ROW}} -->
+    <div class='row flex-fill'>
+        <!-- Description and Categorys [1]-->
+        <div class='col-lg col-12 s-supp-cr-1 p-4 d-flex flex-column order-lg-0 order-2'>
+            <!-- Description -->
+            <div class='row'>
+                <div class='col'>
+                    <p class='h5 text-center text-lg-left p-3 p-lg-0'>Description</p>
+                    <textarea id='productDescInp' #productDescInp title='Procuct Description' rows="6" class='s-desc-text-area s-no-border s-supp-cr-1 p-4 lead'
+                        placeholder="Type the product description here !" [value]='product.prod_desc ? product.prod_desc : ""'>    
+                    </textarea>
+                </div>
+            </div>
+            <!-- Categorys -->
+            <div class='row p-3 m-3~'>
+                <div class='col d-flex justify-content-lg-end justify-content-center p-lg-0'>
+                    <!-- Price -->
+                    <div class="s-temp-btn input-group md-form form-sm form-2 pl-0 rounded mr-4">
+                        <i disabled class="btn input-group-text s-icon-btn s-icon-price s-no-rounded-right light-yellow-bg border-0 rounded-left"></i>
+                        <input id='costInp' #cost type="number" name="Product Price" placeholder="0.00$" required
+                            [value]='product.price ? product.price.cost : ""'
+                            class='form-control s-temp-btn my-0 px-4 s-supp-bg-1-opt5 border-0 s-no-rounded-left s-supp-cr-1'>
+                        <!-- $/LE btn -->
+                        <div class="input-group-append rounded-right">
+                            <input id='costTagInp' #costTag type='text'
+                                [value]='product.price ? product.price.tag : ""'
+                                class="btn input-group-text s-desc-text-area border-0 rounded-right s-add-new s-supp-cr-1" placeholder="$/LE">
+                        </div>
+                    </div>
+                    <!-- Switch Category -->
+                    <div *ngIf='selectedCategory' class='s-temp-btn s-page-opacity rounded s-drop-item my-1 dropdown s-category-switch-btn' id="dropdownMenuLink"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class='h-100 w-100 d-flex justify-content-center align-items-center p-1 rounded' [ngStyle]="selectedCategory.categ_image ? {   
+                        'background-image' :'url('+ categ_service.getUrl(selectedCategory.categ_image) + ')',
+                        ' background-repeat': 'no-repeat',
+                        'background-position': 'center',
+                        'background-size': 'cover',
+                        'border': 'none'
+                        }: false">
+                            <div class='s-category-box-obacity d-flex justify-content-center align-items-center rounded px-2'>
+                                <p class='text-center s-white-cr m-0'>{{selectedCategory.categ_name}}</p>
+                            </div>
+                            <!-- dropdwon menu -->
+                            <div class="dropdown-menu s-categories-dropdown s-dark2-bg rounded" aria-labelledby="dropdownMenuLink">
+                                <div *ngFor='let category of categories' class='row s-drop-item my-1' (click)='selectCategory(category)'>
+                                    <div class='h-100 w-100 d-flex justify-content-center align-items-center p-1' [ngStyle]="category.categ_image ? {   
+                                    'background-image' :'url('+ categ_service.getUrl(category.categ_image) + ')',
+                                    ' background-repeat': 'no-repeat',
+                                    'background-position': 'center',
+                                    'background-size': 'cover',
+                                    'border': 'none'
+                                    }: false">
+                                        <div class='s-category-box-obacity d-flex justify-content-center align-items-center'>
+                                            <p class='text-center s-white-cr m-0'>{{category.categ_name}}</p>
+                                        </div>
+                                    </div>
+                            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add Category -->
+                    <div *ngIf='!selectedCategory' class='s-temp-btn s-page-opacity btn rounded light-yellow-bg py-0 pl-0 border-0 d-flex align-items-center dropdown'
+                    id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class='s-category-btn-icon s-supp-green-bg rounded-left mr-2 d-flex align-items-center justify-content-center'>
+                            <img src="/assets/Icons/admin-products/add.png" width='15' height='15'>
+                        </div>
+                        Category
+                        <!-- dropdwon menu -->
+                        <div class="dropdown-menu s-categories-dropdown s-dark2-bg rounded" aria-labelledby="dropdownMenuLink">
+                            <div *ngFor='let category of categories' class='row s-drop-item my-1' (click)='selectCategory(category)'>
+                                <div class='h-100 w-100 d-flex justify-content-center align-items-center p-1'
+                                [ngStyle]="category.categ_image ? {   
+                                'background-image' :'url('+ categ_service.getUrl(category.categ_image) + ')',
+                                ' background-repeat': 'no-repeat',
+                                'background-position': 'center',
+                                'background-size': 'cover',
+                                'border': 'none'
+                                }: false"
+                                >
+                                <div class='s-category-box-obacity d-flex justify-content-center align-items-center'>
+                                    <p class='text-center s-white-cr m-0'>{{category.categ_name}}</p>
+                                </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+            <!-- Sub Categories  -->
+            <div class='row px-3 justify-content-lg-end justify-content-center'>
+                <!-- Add Sub Categories -->
+                <div *ngIf='selectedCategory && !selectedSubCategory'
+                    class='s-page-opacity btn rounded light-yellow-bg py-0 pl-0 border-0 d-flex align-items-center dropdown s-temp-btn'
+                    id="subCategoriesDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div
+                        class='s-category-btn-icon s-supp-green-bg rounded-left mr-3 d-flex align-items-center justify-content-center'>
+                        <img src="/assets/Icons/admin-products/add.png" width='15' height='15'>
+                    </div>
+                        Sub Categories
+                    <!-- dropdwon menu -->
+                    <div class="dropdown-menu s-categories-dropdown s-dark2-bg rounded" aria-labelledby="subCategoriesDropDown">
+                        <div *ngFor='let subCategory of selectedCategory.sub_categories' class='row s-drop-item my-1' (click)='selectSubCategory(subCategory)'>
+                            <div class='h-100 w-100 d-flex justify-content-center align-items-center p-1'>
+                                <div class='d-flex justify-content-center align-items-center'>
+                                    <p class='text-center s-white-cr m-0'>{{subCategory}}</p>
+                                </div>
+                            </div>
+                    
+                        </div>
+                    </div>
+                </div>
+                <!-- Update sub Categories -->
+                <div *ngIf='selectedCategory && selectedSubCategory'
+                    class='s-page-opacity btn rounded light-yellow-bg py-0 border-0 d-flex align-items-center dropdown s-temp-btn'
+                    id="subCategoriesDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class=' px-3 text-center'>
+                        {{selectedSubCategory}}
+                    </div>
+                    <!-- dropdwon menu -->
+                    <div class="dropdown-menu s-categories-dropdown s-dark2-bg rounded" aria-labelledby="subCategoriesDropDown">
+                        <div *ngFor='let subCategory of selectedCategory.sub_categories' class='row s-drop-item my-1'
+                            (click)='selectSubCategory(subCategory)'>
+                            <div class='h-100 w-100 d-flex justify-content-center align-items-center p-1'>
+                                <div class='d-flex justify-content-center align-items-center'>
+                                    <p class='text-center s-white-cr m-0'>{{subCategory}}</p>
+                                </div>
+                            </div>
+                
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Products Main Image  [2]-->
+        <div
+            class='col-lg col-12 s-main-img-col p-4 d-flex justify-content-center align-items-center  order-lg-1 order-0'>
+            <div id='mainImgBox' class="s-main-image-view s-page-opacity-2 rounded"
+                [ngStyle]="mainImage ?{
+                    'background-image' :'url('+ pro_service.getUrl(mainImage) + ')',
+                    ' background-repeat': 'no-repeat',
+                    'background-position': 'center',
+                    'background-size': 'cover',
+                    'border': 'none'
+                }: false"
+            >
+                <!-- <input type="file" class='s-main-image-view s-opacity-0 rounded'> -->
+            </div>
+        </div>
+        <!-- Products Side Images and colors [3]-->
+        <div class=' col-lg col-12 s-side-col bg-warning~ p-4 d-flex flex-column order-1'>
+            <app-product-color (prod_colors)='resiveProColor($event)' (prod_mainImage)='resiveProdMainImage($event)'></app-product-color>
+        </div>
+    </div>
+    <!-- Product ((Controls))  {{ROW}} -->
+    <div class='row s-controls-holder'>
+        <div class='col d-flex flex-column justify-content-center'>
+            <!-- Product Menu -->
+            <div class='row'>
+                <div class='col d-flex justify-content-center'>
+                    <button class='position-relative s-product-menu-btn p-3~ btn s-supp-bg-1~ s-dark2-bg s-page-opacity rounded' (click)='openProductsMenu()'></button>
+                </div>
+            </div>
+            <!-- Product Controllers  -->
+            <div class='row my-3'>
+                <div class='col d-flex justify-content-center'>
+                    <!-- [delete] -->
+                    <button title='Delete' class='s-product-menu-controllers-btns btn bg-danger s-page-opacity rounded mx-2' (click)='deleteProduct()'>
+                        <img src="/assets/Icons/admin-products/trash.png" width='25' height='25'>
+                    </button>
+                    <!-- [Create New] -->
+                    <button title='Create New Product' class='s-product-menu-controllers-btns btn s-supp-green-bg s-page-opacity rounded mx-2' routerLink='/admin/products'>
+                        <img src="/assets/Icons/admin-products/add.png" width='25' height='25' (click)='resetForAddNew()'>
+                    </button>
+                    <!-- [Save] -->
+                    <button *ngIf='productStats == "New"' title='Save Product' (click)='postNewProduct(productNameInp.value,productDescInp.value, cost.value, costTag.value)' class='s-product-menu-controllers-btns btn light-yellow-bg s-page-opacity rounded mx-2'>
+                        <img src="/assets/Icons/admin-products/save.png" width='25' height='25'>
+                    </button>
+                    <!-- [Update] -->
+                    <button *ngIf='productStats == "Update"' title='Update Product' (click)='updateProduct(productNameInp.value,productDescInp.value, cost.value, costTag.value)' class='s-product-menu-controllers-btns btn light-yellow-bg s-page-opacity rounded mx-2'>
+                        <img src="/assets/Icons/admin-products/update.png" width='25' height='25'>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

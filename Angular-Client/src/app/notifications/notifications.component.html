@@ -1,0 +1,3 @@
+<div id='notificationsHolder' [style.right]='notifyState ?  "0" : "-300px"' [style.opacity]='notifyState ?  "1" : "0"' [ngClass]='alertType' class=" s-notify-holder position-fixed alert fade show mr-lg-5 mt-lg-3 m-4" role="alert">
+    {{notifyMessage}}<strong>{{notifyMessageStrong}}</strong>
+</div>

@@ -1,0 +1,33 @@
+<div id='categorieHolder' class='s-dark-bg'>
+  <div class='container-fluid p-4 s-dark-bg d-flex flex-column'>
+    <app-category-modal class='position-relative' (refrishCategories)='getAllCategories()'></app-category-modal>
+    <div class='row m-0'>
+      <!-- category box -->
+      <ng-container *ngFor='let category of categories let i = index'>
+        <div class='col-lg-6 col-12 my-4 order-lg-1 order-2'>
+          <div (click)='openModal(category._id); showSubCategOfCateg(category)'
+          [ngStyle]="category.categ_image ? {   
+          'background-image' :'url('+ categ_service.getUrl(category.categ_image)+ ')',
+          ' background-repeat': 'no-repeat',
+          'background-position': 'center',
+          'background-size': 'cover',
+          'border': 'none'
+          }: false"
+          [class.s-category-box]='category.categ_image'
+          class="rounded s-add-category-box mx-4 my-2 d-flex justify-content-center align-items-center p-1" data-toggle="modal"
+            data-cat='addCat' data-target="#exampleModalCenter">
+            <div *ngIf="category.categ_image" class='s-category-box-obacity rounded d-flex justify-content-center align-items-center'>
+              <p class='h1 text-center s-white-cr'>{{category.categ_name}}</p>
+            </div>
+            <button *ngIf="!category.categ_image" class='btn s-add-category-butt align-self-center s-supp-green-cr'>+</button>
+          </div>
+        </div>
+      </ng-container>
+      <!-- No Categories -->
+      <div *ngIf='categories.length <= 1'
+        class='col-lg col-12 s-supp-cr-1 h4 m-0 my-4 m-lg-4 d-flex justify-content-center align-items-center order-lg-2 order-1'>
+        No Categories Yet !
+      </div>
+    </div>
+  </div>
+</div>

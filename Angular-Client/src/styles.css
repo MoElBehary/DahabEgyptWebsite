@@ -1,0 +1,198 @@
+/* @import 'app/admin-pages/categories-panel/categories-panel.component.css'; */
+/* Colors ===START */
+    /* #Backgrounds */
+        .s-main-bg{ /*Yellow*/
+            background-color: #FFFBA0;
+        }
+        .light-yellow-bg{ /* light Yellow */
+            background-color:#FFFDCF
+        }
+        .s-white-bg{ /*White*/
+            background-color: #FFFFFF !important;
+        }
+        .s-white-50-bg{ /*White*/
+            background-color: rgba(255,255,255,.15) !important;
+        }
+        .s-dark-bg{ /*Black*/
+            background-color: #222222;
+        }
+        .s-dark-50-bg{
+            background-color: rgba(34, 34, 34, .85) !important;
+        }
+        .s-dark2-bg{
+            background-color: rgb(36, 36, 36) !important;
+        }
+        .s-supp-bg-1{ /*Gray-1*/
+            background-color: #989B9B !important;
+        }
+        .s-supp-bg-1-opt5{
+          background-color: #2A2A2A !important
+        }
+        .s-supp-bg-2 { /*Gray-2*/
+          background-color: #B6B6B6; 
+        }
+        .s-supp-bg-3 { /*Gray-3*/
+          background-color: #D1D1D1;
+        }
+        .s-supp-bg-4 { /*Gray-4*/
+          /* background-color: #E7E7E7 !important;     */
+          background-color: white !important;      
+        }
+        .s-green-bg{
+            background-color: #5CD557;
+        }
+        .s-supp-green-bg{
+            background-color: rgb(32, 180, 57);
+        }
+    /* #Text_Color */
+        .s-main-cr { /*Yellow*/
+            color: #FFFBA0 !important;
+        }
+        .light-yellow-cr {
+          color: #FFFDCF
+        }
+        .s-white-cr{ /*White*/
+            color: #FFFFFF !important;
+        }
+        .s-dark-cr { /*Black*/
+          color: #222222;
+        }
+         .s-dark2-cr{
+            color: #242424 !important;
+        }
+        .s-supp-cr-1 { /*Gray-1*/
+            /* color: #989B9B !important; */
+            color: #858989 !important;
+        }
+
+        .s-supp-cr-2 { /*Gray-2*/
+            color: #B6B6B6;
+        }
+
+        .s-supp-cr-3 { /*Gray-3*/
+            color: #D1D1D1;
+        }
+
+        .s-supp-cr-4 { /*Gray-4*/
+            color: #E7E7E7 !important;
+        }
+        .s-green-cr {
+          color: #5CD557 !important;
+        }
+        .s-supp-green-cr {
+          color: #20B439 !important;
+        }
+/* Colors ===END */
+/* Opacity ===START */
+    .s-opc-5{
+        opacity: .5;
+    }
+     .s-opc-8 {
+       opacity: .8;
+     }
+/* Opacity ===END */
+/* Settings ==START */
+    button:focus, input:focus, textarea:focus{
+    outline: 0 !important;
+    outline-offset: 0 !important;
+    }
+    button:disabled{
+      opacity: none;
+    }
+    a:hover{
+        text-decoration: none;
+    }
+    ::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      color: pink;
+    }
+    ::placeholder {
+      color: rgba(152, 152, 152, .5) !important;
+      opacity: .2;
+    }
+    .s-opacity-0 {
+        opacity: 0 !important;
+    }
+    .s-no-border {
+      border: none;
+    }
+    textarea {
+      resize: none;
+    }
+    textarea { 
+      -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+      -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+      box-sizing: border-box;         /* Opera/IE 8+ */
+    }
+    .s-no-rounded-right{
+      border-top-right-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+    }
+    .s-no-rounded-left{
+      border-top-left-radius: 0 !important;
+      border-bottom-left-radius: 0 !important;
+    }
+    .s-bg-img{
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    .s-bg-no-img{
+      background-image: url('assets/Icons/settings/noImge.png');
+      background-size: 30% !important;
+    }
+/* Settings ===END */
+/* body::-webkit-scrollbar {
+  display: none;
+  -ms-overflow-style: none;
+} */
+.s-notify-holder{
+  transition: all ease-in-out .500s;
+}
+.rtl{
+  direction: rtl;
+}
+/* Categorie-admin-panel ===START */
+/* Categorie-admin-panel ===END */
+/* animate ===START */
+.animate-bottom {
+  position: relative;
+  animation: animatebottom 0.4s;
+}
+@keyframes animatebottom {
+  from {
+    bottom: -250px;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+/* animate ===END */
+/* Elements ===START */
+  /* [?] BUTONS */
+.s-temp-btn{
+    height: 40px;
+}
+.s-btn-tem-h{
+    height: 48px;
+}
+.s-not-clickable{
+  cursor:default;
+}
+.s-no-slider::-webkit-scrollbar{
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  display: none;
+}
+/* Elements ===End */
+/* Angular classes */
+.ng-valid[required], .ng-valid.required  {
+  border-left: 4px solid #42A948 !important; /* green */
+}
+
+.borderRed{
+  border-left: 4px solid #a94442 !important; /* red */
+}

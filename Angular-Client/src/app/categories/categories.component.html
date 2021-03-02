@@ -1,0 +1,116 @@
+<div *ngIf='isLoaded' id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active ">
+      <p class="d-block w-100x s-slider-image" alt="..." [ngStyle]="{
+          'background-image' : 'url('+ pagesImgs_service.getUrl(categ_page_service.userPageData[0].page_slides[0].slide_image) + ')'
+        }"></p>
+      <div class=" carousel-caption d-none d-md-block h-50">
+        <p class='h3 pb-5 s-text-shadow-slider'>{{categ_page_service.userPageData[0].page_slides[0].slide_text}}</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <p class="d-block w-100x s-slider-image" alt="..." [ngStyle]="{
+          'background-image' : 'url('+ pagesImgs_service.getUrl(categ_page_service.userPageData[0].page_slides[1].slide_image) + ')'
+        }"></p>
+      <div class=" carousel-caption d-none d-md-block h-50">
+        <p class='h3 pb-5 s-text-shadow-slider'>{{categ_page_service.userPageData[0].page_slides[1].slide_text}}</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <p class="d-block w-100x s-slider-image" alt="..." [ngStyle]="{
+          'background-image' : 'url('+ pagesImgs_service.getUrl(categ_page_service.userPageData[0].page_slides[2].slide_image) + ')'
+        }"></p>
+      <div class=" carousel-caption d-none d-md-block h-50">
+        <p class='h3 pb-5 s-text-shadow-slider'>{{categ_page_service.userPageData[0].page_slides[2].slide_text}}</p>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<!-- header {{Hot Section}} -->
+<div *ngIf='isLoaded' class='rtl container-fluid s-supp-bg-4'>
+  <div class='row'>
+    <!-- large Box -->
+    <div class='col-md-6 col-12 p-2'>
+      <div (click)='choseCateg(categ_page_service.userPageData[0].page_hot_sec[0].box_name)' class='rounded-left s-large-hot-box s-hot-box w-100 d-flex align-items-end mt-md-2 ml-md-2 m-0 p-2'
+      [ngStyle]="{
+            'background-image' : 'url('+ pagesImgs_service.getUrl(categ_page_service.userPageData[0].page_hot_sec[0].box_image) + ')'
+          }">
+        <div
+          class='s-hot-text-holder s-category-box-obacity s-supp-cr-4 w-100 h-100 text-center~ p-4 d-flex flex-column justify-content-center align-items-center'>
+          <p class='h1 pt-5~'>{{categ_page_service.userPageData[0].page_hot_sec[0].box_name}}</p>
+        </div>
+      </div>
+    </div>
+    <!-- small boxes -->
+    <div class='col-md-6 col-12 p-2'>
+      <div class='row px-0 pb-2 mb-0 mt-md-2 mx-md-2 m-0 '>
+        <div (click)='choseCateg(categ_page_service.userPageData[0].page_hot_sec[1].box_name)' class='rounded-right s-small-hot-box s-hot-box w-100 d-flex align-items-end p-2'
+        [ngStyle]="{
+          'background-image' : 'url('+ pagesImgs_service.getUrl(categ_page_service.userPageData[0].page_hot_sec[1].box_image) + ')'
+        }">
+          <div
+            class='s-hot-text-holder s-category-box-obacity s-supp-cr-4 w-100 h-100 text-center~ p-4 d-flex flex-column justify-content-center align-items-center'>
+            <p class='h1 pt-5~'>{{categ_page_service.userPageData[0].page_hot_sec[1].box_name}}</p>
+          </div>
+        </div>
+      </div>
+      <div class='row px-0 pt-2 my-md-0 mx-md-2 m-0'>
+        <div (click)='choseCateg(categ_page_service.userPageData[0].page_hot_sec[2].box_name)' class='rounded-right s-small-hot-box s-small-hot-box-2 s-hot-box w-100 d-flex align-items-end p-2'
+        [ngStyle]="{
+          'background-image' : 'url('+ pagesImgs_service.getUrl(categ_page_service.userPageData[0].page_hot_sec[2].box_image) + ')'
+        }">
+          <div
+            class='s-hot-text-holder s-category-box-obacity s-supp-cr-4 w-100 h-100 p-4 d-flex flex-column justify-content-center align-items-center'>
+            <p class='h1'>{{categ_page_service.userPageData[0].page_hot_sec[2].box_name}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- category box -->
+<div class='rtl container-fluid s-supp-bg-4'>
+  <div class='row mx-5 my-0 py-5'>
+    <ng-container *ngFor='let category of categories let i = index'>
+      <!-- All Categories -->
+      <div *ngIf='i <= 0' class='col-lg-6 col-12 my-4 order-lg-1 order-2'>
+        <div (click)='selectAllCategory()'
+          class="rounded s-add-category-box mx-4 my-2 d-flex justify-content-center align-items-center p-1 s-all-Categories s-category-box">
+          <div class='s-all-categories-box-obacity rounded d-flex justify-content-center align-items-center'>
+            <p class='h1 text-center s-white-cr'>الكل</p>
+          </div>
+        </div>
+      </div>
+      <!-- Category box -->
+      <div class='col-lg-6 col-12 my-4 order-lg-1 order-2'>
+        <div (click)='selectCategory(category._id, category.categ_name, category.sub_categories)' [ngStyle]="category.categ_image ? {   
+              'background-image' :'url('+ categ_service.getUrl(category.categ_image) + ')',
+              ' background-repeat': 'no-repeat',
+              'background-position': 'center',
+              'background-size': 'cover',
+              'border': 'none'
+              }: false"
+          class="rounded s-add-category-box s-category-box mx-4 my-2 d-flex justify-content-center align-items-center p-1"
+          data-toggle="modal" data-cat='addCat' data-target="#exampleModalCenter">
+          <div *ngIf="category.categ_image"
+            class='s-category-box-obacity rounded d-flex justify-content-center align-items-center'>
+            <p class='h1 text-center s-white-cr'>{{category.categ_name}}</p>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

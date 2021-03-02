@@ -1,0 +1,57 @@
+<!-- comments section -->
+<section>
+    <p class='h3 s-supp-cr-2 mb-4 text-center  text-md-right'>التعليقات :</p>
+    <div *ngFor='let comment of allTopicComments' class='s-blog-post-box col-12 d-flex flex-md-row flex-column s-white-50-bg my-2 p-4 rounded'>
+        <div class='p-4 s-blog-post-text-box'>
+            <p class='text-right h3 s-supp-cr-1 mb-3 text-capitalize'>{{comment.userName}}</p>
+            <article class='text-right s-supp-cr-2 ml-4' [innerHTML]=comment.comment_content>
+            </article>
+        </div>
+    </div>
+</section>
+<!-- form  -->
+<div class='col-12 col-lg p-4'>
+    <!-- form inputs -->
+    <div class='row'>
+        <form #f="ngForm" class='w-100' action="">
+            <!-- input {{UserName}} -->
+            <div class="input-group my-4 s-outline-0">
+                <div class="s-form-contact-input input-group-prepend">
+                    <div
+                        class="s-white-bg s-opc-5 s-form-contact-input-icon rounded-right input-group-text justify-content-center">
+                        <img src="/assets/Icons/contact-icons/user.png" width='25' alt="">
+                    </div>
+                </div>
+                <input ngModel required #userName="ngModel" name="username" type="text" 
+                [class.borderRed]="userName.touched && !userName.valid"
+                class="s-white-bg s-opc-8 s-supp-cr-1 s-form-contact-input form-control rounded-left"
+                    id="inlineFormInputGroup" placeholder="اسم المستخدم...">
+            </div>
+            <!-- input {{E-Mail}} -->
+            <div class=" input-group mb-4 ">
+                <div class="s-form-contact-input input-group-prepend">
+                    <div
+                        class="s-white-bg s-opc-5 rounded-right s-form-contact-input-icon input-group-text justify-content-center">
+                        <img src="/assets/Icons/contact-icons/mail.png" width='25' alt="">
+                    </div>
+                </div>
+                <input ngModel required #mail="ngModel" type="email" name="email"
+                [pattern]="va_serv.emailRegex"
+                [class.borderRed]="mail.touched && !mail.valid"
+                 class="s-opc-8 s-white-bg rounded-left s-supp-cr-1 s-form-contact-input form-control"
+                    id="inlineFormInputGroup" placeholder="البريد الإلكتروني...">
+            </div>
+            <div class='col-12 s-white-bg s-opc-8 rounded-top p-0'>
+                <textarea ngModel required #content="ngModel" name="content" 
+                [class.borderRed]="content.touched && !content.valid"
+                 class="border-0 rounded-0 rounded-top p-3 m-0 form-control s-white-bg s-supp-cr-1"
+                    id="exampleFormControlTextarea1" placeholder="التعليق هنا..." rows="3"></textarea>
+            </div>
+            <div class='rounded-bottom s-white-bg s-opc-8 col p-0 m-0 d-flex align-items-end justify-content-end'>
+                <hr class='position-absolute s-form-contact-send-hr'>
+                <!-- comment button  -->
+                <input (click)='postComment(userName.value, mail.value, content.value)' [disabled]='f.invalid' class='rounded btn s-supp-cr-1 s-form-contact-send p-4' type="submit" value='تعليق'>
+            </div>
+        </form>
+    </div> 
+</div>

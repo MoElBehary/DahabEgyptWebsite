@@ -1,0 +1,78 @@
+
+.s-box{
+    height: 350px;
+    transition: ease-in-out .2s;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    text-shadow: 0px 0px 6px black;
+    border: none;
+    cursor: pointer;
+}
+.s-box:hover {
+    color : white !important;
+}
+.s-small-box{
+    height: 250px;
+    transition: ease-in-out .2s;
+    background-repeat: no-repeat;
+    background-size: 180px;
+    background-position: center;
+    /* text-shadow: 0px 0px 6px black; */
+    border: none;
+    cursor: pointer;
+}
+.s-small-box:hover{
+    color : white !important;
+}
+.s-category-box-obacity{
+    width: 100%;
+    height: 100%;
+    background: rgba(34, 34, 34, .5);
+    transition: all ease-in-out .2s;
+}
+.s-category-box-obacity:hover{
+    background: rgba(34, 34, 34, .8);
+}
+.s-category-box:hover{
+    transition: all ease-in-out .2s;
+     box-shadow: 0px 0px 0px 1px rgba(255, 251, 160,1);
+    cursor: pointer;
+}
+.s-category-box-obacity2{
+     width: 100%;
+    height: 100%;
+    background: rgba(34, 34, 34, .1);
+    transition: all ease-in-out .2s;
+}
+.s-category-box-obacity2:hover{
+    background: rgba(32, 180, 57,.5);
+}
+.s-categ-box-icon{
+    background-image: url(/assets/Icons/admin-dashboard/categories.png);
+}
+.s-prod-box-icon{
+    background-image: url(/assets/Icons/admin-dashboard/products.png);
+}
+.s-categ-main-box-icon{
+    background-image: url("/assets/Icons/admin-dashboard/categ main.png");
+}
+.s-prod-main-box-icon{
+    background-image: url("/assets/Icons/admin-dashboard/prod main.png");
+}
+/* pages */
+.s-home-box-icon{
+    background-image: url(/assets/Icons/admin-dashboard/home.png);
+}
+.s-about-box-icon{
+    background-image: url(/assets/Icons/admin-dashboard/about.png);
+}
+.s-contact-box-icon{
+    background-image: url(/assets/Icons/admin-dashboard/contact.png);
+}
+.s-blog-box-icon{
+    background-image: url(/assets/Icons/admin-dashboard/blog.png);
+}
+.s-new-admin-box-icon{
+    background-image: url('/assets/Icons/admin-dashboard/new admin.png');
+}

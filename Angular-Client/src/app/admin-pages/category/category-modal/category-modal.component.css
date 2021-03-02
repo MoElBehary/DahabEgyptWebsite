@@ -1,0 +1,63 @@
+.s-make-me-up{
+    z-index: 4000;
+}
+.s-cancel-btn{
+    border : #FFFBA0 solid 1px;
+    transition: all ease-in-out .2s;
+}
+.s-cancel-btn:hover{
+    border : #FFFDCF solid 1px;
+    background-color: #FFFDCF;
+    color: #242424 !important;
+}
+.s-delete-btn{
+    border : #dc3545 solid 1px;
+    transition: all ease-in-out .2s;
+}
+.s-delete-btn:hover{
+    border : #dc3545 solid 1px;
+    background-color:#dc3545 ;
+    color: #242424 !important;
+}
+.s-save-btn:hover{
+    transition: all ease-in-out .2s;
+    background-color: #FFFDCF;
+}
+.s-sub-categ-btn:hover{
+    background-color: #20B439;
+}
+.s-category-image{
+    transition: all ease-in-out .2s;
+    width: 100%;
+    height: 250px;
+    background-image: url('/assets/Icons/admin-category/addNewImg.png');
+    background-position: center ;
+    background-repeat: no-repeat;
+    background-size: 60px;
+    border: 4px dashed rgba(152,155,155,1);
+    cursor: pointer;
+}
+@media (max-width: 991px) {
+    .s-category-image{
+        width: 100%;
+        /* height: 330px; */
+    }
+    .s-modal-holder{
+        height: 580px;
+        overflow: scroll;
+    }
+}
+.s-category-image:hover{
+    border: 4px dashed #989B9B;
+
+}
+.s-page-opacity{
+    cursor: pointer;
+    transition: all ease-in-out .1s;
+    opacity: .6 !important;
+}
+.s-page-opacity:hover {
+    cursor: pointer;
+    transition: all ease-in-out .1s;
+    opacity: 1 !important;
+}

@@ -1,0 +1,103 @@
+.s-icon-btn{
+    width: 60px;
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.s-icon-googleMap{
+     background-image: url('/assets/Icons/admin-contact/maps.png');
+}
+.s-icon-address{
+     background-image: url('/assets/Icons/admin-contact/address.png');
+}
+.s-icon-mail{
+     background-image: url('/assets/Icons/admin-contact/mail.png');
+}
+.s-icon-phone{
+     background-image: url('/assets/Icons/admin-contact/phone.png');
+}
+.s-icon-facebook{
+     background-image: url('/assets/Icons/admin-contact/facebook.png');
+}
+.s-icon-twitter{
+     background-image: url('/assets/Icons/admin-contact/twitter.png');
+}
+.s-icon-instagram{
+     background-image: url('/assets/Icons/admin-contact/instagram.png');
+}
+.s-icon-in{
+     background-image: url('/assets/Icons/admin-contact/in.png');
+}
+.s-icon-whatsapp{
+     background-image: url('/assets/Icons/admin-contact/whatsapp.png');
+}
+.s-icon-telegram{
+     background-image: url('/assets/Icons/admin-contact/telegram.png');
+}
+.s-icon-support-account{
+     background-image: url('/assets/Icons/admin-contact/Support Account.png');
+}
+.s-icon-suggestions-account{
+     background-image: url('/assets/Icons/admin-contact/suggestions account.png');
+}
+.s-icon-complaints-account{
+     background-image: url('/assets/Icons/admin-contact/complaints account.png');
+}
+.s-icon-inquiries-account{
+     background-image: url('/assets/Icons/admin-contact/inquiries account.png');
+}
+.s-img-inp{
+  cursor: pointer;
+}
+.s-btn-tem-h{
+    height: 48px;
+}
+.s-modal-inp{
+    /* background-color: rgba(152, 155, 155, .1); */
+    white-space: nowrap;
+    overflow: hidden;
+}
+.s-modal-inp:hover{
+    overflow-x: auto;
+}
+.s-no-rounded-right{
+   border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+.s-no-rounded-left{
+   border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+.s-save-btn:hover{
+  background-color:#FFFDCF!important;
+  color: #222222 !important;
+}
+/*  */
+.s-add-new-inp{
+   border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+.s-add-new{
+   width: 60px;
+    /* height: 30px; */
+    background-image: url('/assets/Icons/admin-products/add.png');
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.s-add-new:hover{
+     background-color: rgb(32, 180, 57);
+}
+.s-delete{
+    width: 60px;
+    background-image: url('/assets/Icons/admin-products/delete.png');
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: .5;
+    transition: all ease-in-out .2;
+}
+.s-delete:hover{
+    background-color: #dc3545 !important;
+    opacity: 1;
+}

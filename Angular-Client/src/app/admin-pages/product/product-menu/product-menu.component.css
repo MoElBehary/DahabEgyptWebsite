@@ -1,0 +1,131 @@
+.s-modal-holder{
+ height: 580px;
+ overflow: scroll;
+}
+.s-product-box{
+    width: 100%;
+    height: 185px;
+    cursor: pointer;
+    background-image : url('/assets/Icons/admin-products/noImge.png');
+    background-size: 140px;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all linear .2s;
+}
+.s-product-box:hover{
+    background-size: 160px;
+}
+.s-product-box-holder{   
+    width: 230px;
+    height: 230px;
+}
+.s-product-box-holder:hover{
+    box-shadow: 0px 0px 0px 2px rgba(255, 251, 160,.2);
+    cursor: pointer;
+}
+.s-search-btn{
+    width: 60px;
+    /* height: 30px; */
+    background-image: url('/assets/Icons/admin-products/serach.png');
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.s-category-name{
+    width: 30%;
+    top: 0;
+    opacity: .85;
+    z-index: 4000;
+}
+.s-product-title{
+    width: 100%;
+    bottom: 0px;
+}
+.s-sub-categories-holder{
+ width: 100%;
+ height: 48px;
+ overflow-x: scroll; 
+ overflow-y: hidden;
+}
+.s-sub-categories-btns{
+   white-space: nowrap;
+   text-align: center;
+}
+.s-sub-categories-btns:hover{
+    background-color: #FFFBA0;
+    color: #242424 !important;
+}
+.s-sub-categories-selected_btns{
+    background-color: #FFFBA0;
+    color: #242424 !important;
+}
+.s-dash{
+  width: 18px;
+  height: 100%;
+  opacity: .8;
+}
+.s-dash-right{
+  right:15px;
+  top: 0;
+  width: 18px;
+  height: 100%;
+  opacity: .8;
+}
+@media (max-width: 991px) {
+    .s-product-box{
+        height: 285px; 
+        background-size: 200px;
+    }
+    .s-product-box:hover{
+        background-size: 220px;
+    }
+    .s-product-box-holder{
+        width: 330px;
+        height: 330px; 
+    }
+    .s-search-bar{
+    width: 100%;
+    }
+    .s-category-name{
+    width: 70%;
+    top: 0;
+    z-index: 4000;
+    }
+}
+.s-category-box:hover{
+    transition: all ease-in-out .2s;
+     box-shadow: 0px 0px 0px 1px rgba(255, 251, 160,1);
+    cursor: pointer;
+}
+.s-category-box-obacity{
+    width: 100%;
+    height: 100%;
+    background: rgba(34, 34, 34, .2);
+    transition: all ease-in-out .2s;
+}
+.s-category-box-obacity:hover{
+    background: rgba(34, 34, 34, .5);
+}
+.s-category-box:hover{
+    transition: all ease-in-out .2s;
+     box-shadow: 0px 0px 0px 1px rgba(255, 251, 160,1);
+    cursor: pointer;
+}
+.s-add-category-box{
+    height: 350px;
+}
+.s-all-categories-box-obacity{
+    width: 100%;
+    height: 100%;
+    background: rgba(34, 34, 34, .8);
+    transition: all ease-in-out .2s;
+}
+.s-all-categories-box-obacity:hover{
+    background: rgba(34, 34, 34, .9);
+}
+.s-all-Categories{
+    background-image: url('/assets/Icons/admin-products/categories.png'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}

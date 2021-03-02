@@ -1,0 +1,27 @@
+<!-- Button trigger modal -->
+<button id='menuBut' type="button" class="btn btn-primary invisible" data-toggle="modal" data-target="#exampleModal">
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Whatsapp</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div *ngIf='isLoaded' class="modal-body">
+                <a *ngFor='let num of data' class=' m-2 d-block'>
+                    <img class='m-2' width='26' src="/assets/Icons/contact-icons/whatsapp.png" alt="">
+                    {{num}}
+                </a>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

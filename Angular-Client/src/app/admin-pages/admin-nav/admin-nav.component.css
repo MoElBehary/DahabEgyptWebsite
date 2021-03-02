@@ -1,0 +1,35 @@
+.s-navbar{
+    z-index: 1500;
+}
+.s-under-nav{
+    height: 56px;
+}
+@media (max-width: 992px) {
+  .s-under-nav {
+    height: 62px;
+  }
+}
+.nav-item:hover{
+  background: #FFFDCF;
+}
+.s-logout-btn:hover{
+  transition: all ease-in-out .2s;
+  background-color: #222222 !important;
+}
+.s-icon-btn{
+    width: 60px;
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.s-icon-logout{
+     background-image: url('/assets/Icons/login/logout.png');
+}
+.s-no-rounded-right{
+   border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+.s-no-rounded-left{
+   border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}

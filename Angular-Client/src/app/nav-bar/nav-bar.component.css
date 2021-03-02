@@ -1,0 +1,26 @@
+.s-navbar{
+    z-index: 5500;
+}
+.s-under-nav{
+    height: 56px;
+}
+@media (max-width: 992px) {
+  .s-under-nav {
+    height: 62px;
+  }
+}
+.nav-item:hover{
+  background: #FFFDCF;
+}
+.s-serach-bar{
+   border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+.s-search-btn{
+    width: 60px;
+    /* height: 30px; */
+    background-image: url('/assets/Icons/admin-products/serach.png');
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: center;
+}

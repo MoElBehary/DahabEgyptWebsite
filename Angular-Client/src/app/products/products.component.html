@@ -1,0 +1,223 @@
+<!-- Slider -->
+<div *ngIf='isLoaded' id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active ">
+      <p class="d-block w-100x s-slider-image" alt="..."
+      [ngStyle]="{
+        'background-image' : 'url('+ pagesImgs_service.getUrl(pageData[0].page_slides[0].slide_image) + ')'
+      }"></p>
+      <div class=" carousel-caption d-none d-md-block h-50">
+        <p class='h3 pb-5 s-text-shadow-slider'>{{pageData[0].page_slides[0].slide_text}}</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <p class="d-block w-100x s-slider-image" alt="..."
+      [ngStyle]="{
+        'background-image' : 'url('+ pagesImgs_service.getUrl(pageData[0].page_slides[1].slide_image) + ')'
+      }"></p>
+      <div class=" carousel-caption d-none d-md-block h-50">
+        <p class='h3 pb-5 s-text-shadow-slider'>{{pageData[0].page_slides[1].slide_text}}</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <p class="d-block w-100x s-slider-image" alt="..."
+      [ngStyle]="{
+        'background-image' : 'url('+ pagesImgs_service.getUrl(pageData[0].page_slides[2].slide_image) + ')'
+      }"></p>
+      <div class=" carousel-caption d-none d-md-block h-50">
+        <p class='h3 pb-5 s-text-shadow-slider'>{{pageData[0].page_slides[2].slide_text}}</p>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<!-- header {{Hot Section}} -->
+<div *ngIf='isLoaded' class='rtl container-fluid s-supp-bg-4'>
+  <div class='row'>
+    <!-- large Box -->
+    <div class='col-md-6 col-12 p-2'>
+      <div class='rounded-left s-large-hot-box s-hot-box w-100 d-flex align-items-end mt-md-2 ml-md-2 m-0 p-2'
+      [ngStyle]="{
+        'background-image' : 'url('+ pagesImgs_service.getUrl(pageData[0].page_hot_sec[0].box_image) + ')'
+      }">
+        <div class='s-hot-text-holder s-supp-cr-4 w-100 h-50 text-center~ p-4 d-flex flex-column justify-content-around align-items-center'>
+          <p class='h1 s-text-shadow'>{{pageData[0].page_hot_sec[0].box_name}}</p>
+          <div class='s-hot-desc mb-2 text-center'>
+            <p class='lead s-text-shadow'>
+              {{pageData[0].page_hot_sec[0].box_desc}}
+            </p>
+          </div>
+          <a [routerLink]='"/product/" + pageData[0].page_hot_sec[0].box_prodID' class='btn s-btn-tem-h mx-1 px-5 input-group-text border-0 s-main-bg s-dark-cr rounded'>Know More</a>
+        </div>
+      </div>
+    </div>
+    <!-- small boxes -->
+    <div class='col-md-6 col-12 p-2'>
+      <div class='row px-0 pb-2 mb-0 mt-md-2 mx-md-2 m-0 '>
+        <div class='rounded-right s-small-hot-box s-hot-box w-100 d-flex align-items-end p-2'
+         [ngStyle]="{
+          'background-image' : 'url('+ pagesImgs_service.getUrl(pageData[0].page_hot_sec[1].box_image) + ')'
+        }">
+          <div class='s-hot-text-holder s-supp-cr-4 w-100 h-50 text-center~ p-4 d-flex flex-column justify-content-around align-items-center'>
+            <p class='h1 s-text-shadow'>{{pageData[0].page_hot_sec[1].box_name}}</p>
+            <a [routerLink]='"/product/" + pageData[0].page_hot_sec[1].box_prodID' class='m-auto~ btn s-btn-tem-h mx-1 px-5 input-group-text border-0 s-main-bg s-dark-cr rounded'>Know More</a>
+          </div>
+        </div>
+      </div>
+      <div class='row px-0 pt-2 my-md-0 mx-md-2 m-0'>
+        <div class='rounded-right s-small-hot-box s-hot-box w-100 d-flex align-items-end p-2'
+         [ngStyle]="{
+          'background-image' : 'url('+ pagesImgs_service.getUrl(pageData[0].page_hot_sec[2].box_image) + ')'
+        }">
+          <div class='s-hot-text-holder s-supp-cr-4 w-100 h-50 p-4 d-flex flex-column justify-content-around align-items-center'>
+            <p class='h1 s-text-shadow'>{{pageData[0].page_hot_sec[2].box_name}}</p>
+            <a [routerLink]='"/product/" + pageData[0].page_hot_sec[2].box_prodID' class=' btn s-btn-tem-h mx-1 px-5 input-group-text border-0 s-main-bg s-dark-cr rounded'>Know More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Body -->
+<div id='prodBody' class='container-fluid s-supp-bg-4 s-main-holder'>
+  <div class='container pt-5'>
+    <!-- Controller bar -->
+    <div class='row m-0 position-sticky s-controller-bar rounded shadow-sm'>
+      <!-- category name -->
+      <div class='col-md-2 col-12 p-0 s-supp-bg-3 rounded-left'>
+        <button class='btn s-main-bg s-supp-cr-2 rounded-left py-2 px-4 mr-3 s-selected-categ-btns w-100'
+          [title]='CategoryName'>{{CategoryName}}</button>
+      </div>
+      <!-- categories btns -->
+      <div class='rtl col-md-6 col-12 p-0 my-2 my-md-0 s-supp-bg-3 position-relative'>
+        <div class='position-absolute s-supp-bg-3 s-dash d-none d-md-block'></div>
+        <div class='s-no-slider s-categories-holder d-flex align-items-center'>
+          <div class='s-supp-bg-3 s-dash-right d-none d-md-block px-3'></div>
+          <button (click)='selectAllCategory()'
+            class='btn s-supp-bg-4 s-supp-cr-2 rounded py-2 px-4 mr-3 s-categories-btns'>الكل</button>
+          <button *ngFor='let category of categories let i = index'
+            (click)='selectCategory(category._id, category.categ_name); selectSubCategOfCateg(category.sub_categories)'
+            class='btn s-supp-bg-4 s-supp-cr-2 rounded py-2 px-4 mr-3 s-categories-btns text-nowrap'>{{category.categ_name}}</button>
+          <div class='s-supp-bg-3 s-dash-right d-none d-md-block pr-3'></div>
+        </div>
+        <div class='position-absolute s-supp-bg-3 s-dash-right d-none d-md-block'></div>
+      </div>
+      <!-- search Bar -->
+      <div class='col p-0 s-supp-bg-3 rounded-right'>
+        <div class="input-group md-form form-sm form-2 pl-0 s-white-50-bg rounded-right">
+          <input class="text-right form-control my-0 py-4 px-4 s-white-50-bg border-0 s-serach-bar " type="text" placeholder="بحث"
+            aria-label="Search" [(ngModel)]='prod_service.productFromSearch'>
+          <div class="input-group-append rounded-right">
+            <button class="btn input-group-text s-search-btn s-white-50-bg border-0 rounded-right"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Sub Categories -->
+    <div *ngIf='productsByCategories != ""' class='rtl row mx-5 mt-5'>
+      <div class='col-12 position-relative'>
+        <div class='position-absolute s-dash d-none d-md-block s-supp-bg-4'></div>
+        <div class='s-no-slider s-sub-categories-holder d-flex align-items-center pl-5'>
+          <div class=' d-flex m-auto'>
+            <button id='allProdOfSubCateg' (click)='selectAllSubCategories()' data-select='false'
+              [class.s-sub-categories-selected_btns]='productBySubCateg == ""'
+              class='btn s-dark-bg s-supp-cr-3 rounded py-2 px-4 mr-3 s-sub-categories-btns'>الكل</button>
+            <button *ngFor='let subCategories of selectedSubCategOfCateg let i = index'
+              (click)='selectProdsOfSubCateg(subCategories)' data-select='false'
+              class='btn s-dark-bg s-supp-cr-3 rounded py-2 px-4 mr-3 s-sub-categories-btns text-nowrap'>{{subCategories}}</button>
+            <div class='s-dash-right px-3 d-none d-md-block s-dark2-bg'></div>
+          </div>
+        </div>
+        <div class='position-absolute s-dash-right-2 d-none d-md-block s-supp-bg-4 '></div>
+      </div>
+    </div>
+    <!--All Products -->
+    <ng-container *ngIf='productsByCategories == ""'>
+      <div class='rtl row row m-0 py-5'>
+        <div *ngFor='let product of products | filter:prod_service.productFromSearch' class='col-lg-3 col-sm-6 col-12 pt-0 px-0 pb-3'>
+          <div (click)='selectProductById(product._id)' class=' s-product-box-holder mx-2 mb-5'>
+            <!-- image -->
+            <div class='s-product-box' [ngStyle]="product.prod_colors[0].prod_images != undefined ? {   
+            'background-image' :'url('+ prod_service.getUrl(product.prod_colors[0].prod_images[0].prod_side_img) + ')'
+            } : false"></div>
+            <!-- Title -->
+            <p class='lead m-0 pt-3 px-3 pb-2 text-center text-md-right'>{{product.prod_name| slice:0:20}}<span *ngIf='product.prod_name.length > 20'>...</span></p>
+            <!-- Description -->
+            <p class='s-supp-cr-1 px-3 pb-3~ text-center text-md-right'>{{product.prod_desc| slice:0:60}}...</p>
+            <!-- Colors -->
+            <div class='mx-2 col-lg col-12 p-lg-0 p-3 d-flex flex-column flex-lg-row order-lg-0 order-1  align-items-center'>
+              <div id='colorHolder'
+                class='bg-warning~ s-side-imgs-holder~ d-flex justify-content-center~ align-items-center '>
+                <ng-container *ngFor='let prodColor of product.prod_colors let i = index'>
+                  <div (click)='selectColor(i); selectedColor(i)' [class.s-selected]='i == selectedColorBox'
+                    *ngIf='prodColor.prod_color' class='m-2 s-product-color' [ngStyle]="{
+                                                'background-color': prodColor.prod_color
+                                            }">
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf='!products' class='col-12 s-no-products d-flex justify-content-center align-items-center'>
+          <p class='display-4 text-center s-supp-cr-3'> ! لا يوجد منتجات</p>
+        </div>
+      </div>
+    </ng-container>
+    <!-- Products By Category -->
+    <ng-container *ngIf='productsByCategories != "" && productBySubCateg == "" '>
+      <div class='rtl row row m-0 py-5'>
+        <div *ngFor='let product of productsByCategories | filter:prod_service.productFromSearch'
+          class='col-lg-3 col-sm-6 col-12 pt-0 px-0 pb-3'>
+          <div (click)='selectProductById(product._id)' class=' s-product-box-holder mx-2 mb-5'>
+            <!-- image -->
+            <div class='s-product-box' [ngStyle]="product.prod_colors[0].prod_images != undefined ? {   
+            'background-image' :'url('+ prod_service.getUrl(product.prod_colors[0].prod_images[0].prod_side_img) + ')'
+            } : false"></div>
+            <!-- Title -->
+            <p class='lead m-0 pt-3 px-3 pb-2 text-center text-md-right'>{{product.prod_name| slice:0:20}}<span *ngIf='product.prod_name.length > 20'>...</span></p>
+            <!-- Description -->
+            <p class='s-supp-cr-1 px-3 pb-3 text-center text-md-right'>{{product.prod_desc| slice:0:60}}...</p>
+          </div>
+        </div>
+        <div *ngIf='!productsByCategories'
+          class='col-12 s-no-products d-flex justify-content-center align-items-center'>
+          <p class='display-4 text-center s-supp-cr-3'> ! لا يوجد منتجات</p>
+        </div>
+      </div>
+    </ng-container>
+    <!-- Products by sub Categories -->
+    <ng-container *ngIf='productsByCategories != "" && productBySubCateg != ""  '>
+      <div class='rtl row row m-0 py-5'>
+        <div *ngFor='let product of productBySubCateg | filter:prod_service.productFromSearch'
+          class='col-lg-3 col-sm-6 col-12 pt-0 px-0 pb-3'>
+          <div (click)='selectProductById(product._id)' class=' s-product-box-holder mx-2 mb-5'>
+            <!-- image -->
+            <div class='s-product-box' [ngStyle]="product.prod_colors[0].prod_images != undefined ? {   
+                  'background-image' :'url('+ prod_service.getUrl(product.prod_colors[0].prod_images[0].prod_side_img) + ')'
+                  } : false"></div>
+            <!-- Title -->
+            <p class='lead m-0 pt-3 px-3 pb-2 text-center text-md-right'>{{product.prod_name| slice:0:20}}<span *ngIf='product.prod_name.length > 20'>...</span></p>
+            <!-- Description -->
+            <p class='s-supp-cr-1 px-3 pb-3 text-center text-md-right'>{{product.prod_desc| slice:0:60}}...</p>
+          </div>
+        </div>
+        <div *ngIf='!productBySubCateg' class='col-12 s-no-products d-flex justify-content-center align-items-center'>
+          <p class='display-4 text-center s-supp-cr-3'> ! لا يوجد منتجات</p>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

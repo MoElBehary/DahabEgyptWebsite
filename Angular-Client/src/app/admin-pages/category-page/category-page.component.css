@@ -1,0 +1,44 @@
+.s-make-me-up{
+    z-index: 4000;
+}
+.s-icon-btn{
+    width: 60px;
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.s-icon-image{
+     background-image: url('/assets/Icons/admin-about/addNewImg.png');
+}
+.s-icon-art{
+     background-image: url('/assets/Icons/admin-about/article.png');
+}
+.s-icon-category-id{
+     background-image: url('/assets/Icons/admin-category-page/categories.png');
+}
+.s-img-inp{
+  cursor: pointer;
+}
+.s-btn-tem-h{
+    height: 48px;
+}
+.s-modal-inp{
+    /* background-color: rgba(152, 155, 155, .1); */
+    white-space: nowrap;
+    overflow: hidden;
+}
+.s-modal-inp:hover{
+    overflow-x: auto;
+}
+.s-no-rounded-right{
+   border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+.s-no-rounded-left{
+   border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+.s-save-btn:hover{
+  background-color:#FFFDCF!important;
+  color: #222222 !important;
+}

@@ -1,0 +1,115 @@
+<div id='contactHolder' class='s-supp-bg-3 container-fluid p-0 '>
+  <div class='s-contact-content-holder container-fluid p-0'>
+    <!-- map -->
+    <section class='row p-0 m-0'>
+      <div id='contactMap' class=' s-supp-bg-1 rounded-0~ col-lg-7 p-0 col-12 m-lg-0 s-contact-map rounded-right d-flex justify-content-end align-items-center'>
+        <iframe id='frameMap' class='s-iframe-map rounded-0~ rounded-right'
+          frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+        <button id='toggleMapBtn' #toggleMapBtn (click)='toggleMap(toggleMapBtn)' data-toggle='true' class='s-opc-5 rounded-0 rounded-right s-open-close-map-btn btn s-supp-bg-1 d-lg-block d-none position-absolute'>
+        </button>
+      </div>
+    </section>
+    <!-- contacts -->
+    <section *ngIf='isLoaded' class='rtl row p-lg-4 px-0 mx-4 m-lg-0 s-dark-cr'>
+      <div class='col-lg-1'></div>
+      <!-- info -->
+      <div class='col-12 col-lg p-4  text-right'>
+        <img class='my-2 mx-4' src="/assets/Icons/contact-icons/location.png" width="40" alt="">
+        <p class='h3'>موقعنا </p>
+        <p *ngFor='let address of data[0].contact_info.address' class='mx-4'>
+          {{address}}
+        </p>
+        <!-- ---- -->
+        <br>
+        <img class='my-2 mx-4' src="/assets/Icons/contact-icons/mail.png" width="40" alt="">
+        <p class='h3 '>بيانات المتصل </p>
+        <p *ngFor='let email of data[0].contact_info.Emails' class='mx-4'>
+          {{email}}
+          <br>
+        </p>
+        <!-- ---- -->
+        <br>
+        <img class='my-2 mx-4' src="/assets/Icons/contact-icons/phone.png" width="40" alt="">
+        <p class='h3'>اتصل بنا </p>
+        <p *ngFor='let phone of data[0].contact_info.phone' class='mx-4'>
+          {{phone}}
+        </p>
+        <br>
+        <hr class='s-supp-cr-1 d-block d-lg-none'>
+      </div>
+      <!-- form  -->
+    <div class='col-12 col-lg p-4'>
+      <!-- form buttons -->
+      <div class='row bg-dark~ mt-2 justify-content-center flex-column align-items-stretch s-form-contact-input'>
+        <div class="btn-group s-form-contact-input" role="group" aria-label="Basic example">
+          <button type="button" class="rounded-right ml-1 btn btn-secondary border-0">الدعم</button>
+          <button type="button" class="ml-1 btn btn-secondary border-0">اقتراحات</button>
+          <button type="button" class="ml-1 btn btn-secondary border-0">شكاوي</button>
+          <button type="button" class="rounded-left btn btn-secondary border-0">استفسارات</button>
+        </div>
+      </div>
+      <!-- form inputs -->
+      <div class='row'>
+        <!-- input {{UserName}} -->
+        <div class="input-group my-4 s-outline-0">
+          <div class="s-form-contact-input input-group-prepend">
+            <div class="s-white-bg s-opc-5 s-form-contact-input-icon rounded-right input-group-text justify-content-center">
+              <img src="/assets/Icons/contact-icons/user.png" width='25' alt="">
+            </div>
+          </div>
+          <input type="text" class="s-white-bg s-opc-8 s-supp-cr-1 s-form-contact-input form-control rounded-left"
+            id="inlineFormInputGroup" placeholder="الأسم">
+        </div>
+        <!-- input {{E-Mail}} -->
+        <div class=" input-group mb-4 ">
+          <div class="s-form-contact-input input-group-prepend">
+            <div class="s-white-bg s-opc-5 rounded-right s-form-contact-input-icon input-group-text justify-content-center">
+              <img src="/assets/Icons/contact-icons/mail.png" width='25' alt="">
+            </div>
+          </div>
+          <input type="email" class="s-opc-8 s-white-bg rounded-left s-supp-cr-1 s-form-contact-input form-control"
+            id="inlineFormInputGroup" placeholder="الميل">
+        </div>
+        <!-- input {{Subject}} -->
+        <div class="input-group mb-4">
+          <div class="s-form-contact-input input-group-prepend">
+            <div class="s-white-bg s-opc-5 rounded-right s-form-contact-input-icon input-group-text justify-content-center">
+              <img src="/assets/Icons/contact-icons/Subject.png" width='25' alt="">
+            </div>
+          </div>
+          <input type="text" class="s-white-bg s-opc-8 rounded-left s-supp-cr-1 s-form-contact-input form-control"
+            id="inlineFormInputGroup" placeholder="الموضوع">
+        </div>
+        <div class='col-12 s-white-bg s-opc-8 rounded-top p-0'>
+          <textarea class="border-0 rounded-0 rounded-top p-3 m-0 form-control s-white-bg s-supp-cr-1"
+            id="exampleFormControlTextarea1" placeholder="أكتب رسالتك..." rows="3"></textarea>
+        </div>
+        <div class='rounded-bottom s-white-bg s-opc-8 col p-0 m-0 d-flex align-items-end justify-content-end'>
+          <hr class='position-absolute s-form-contact-send-hr'>
+          <input class='rounded btn s-supp-cr-1 s-form-contact-send p-4' type="submit" value='إرسال'>
+        </div>
+      </div>
+    </div>
+      <div class='col-lg-1'></div>
+    </section>
+    <!-- fllow us S.M -->
+    <section *ngIf='isLoaded' class='rtl row p-4 py-lg-0 mx-4 m-lg-0'>
+      <div class='col-lg-1'></div>
+      <div class='col py-0 py-lg-4 d-lg-block d-flex justify-content-center'>
+        <!-- Sochial Media -->
+        <div class='float-left'>
+          <a *ngIf='data[0].contact_info.socialMedia[0].facebook' class=' m-2' [href]="data[0].contact_info.socialMedia[0].facebook"><img width='25' src="/assets/Icons/contact-icons/fb.png" alt=""></a>
+          <a *ngIf='data[0].contact_info.socialMedia[1].twitter' class=' m-2' [href]="data[0].contact_info.socialMedia[1].twitter"><img width='25' src="/assets/Icons/contact-icons/twitter.png" alt=""></a>
+          <a *ngIf='data[0].contact_info.socialMedia[2].instagram' class=' m-2' [href]="data[0].contact_info.socialMedia[2].instagram"><img width='25' src="/assets/Icons/contact-icons/insta.png" alt=""></a>
+          <a *ngIf='data[0].contact_info.socialMedia[3].linkedin' class=' m-2' [href]="data[0].contact_info.socialMedia[3].linkedin"><img width='25' src="/assets/Icons/contact-icons/in.png" alt=""></a>
+          <a *ngIf='data[0].contact_info.socialMedia[4].telegram' class=' m-2' [href]="data[0].contact_info.socialMedia[4].telegram"><img width='22' src="/assets/Icons/contact-icons/telegram.png" alt=""></a>
+          <a (click)='openWhatsappMenu()' *ngIf='data[0].contact_info.socialMedia[5].whatsapp[0]' class=' m-2'><img width='26' src="/assets/Icons/contact-icons/whatsapp.png" alt=""></a>
+          <!-- whatsappMenu -->
+          <app-whatsapp-menu></app-whatsapp-menu>
+          <p class=' d-none d-md-block m-0 float-right px-4 s-supp-cr-1'>تابعونا علي مواقع التواصل الاجتماعي</p>
+        </div>
+      </div>
+      <div class='col-lg-1'></div>
+    </section>
+  </div>
+</div>

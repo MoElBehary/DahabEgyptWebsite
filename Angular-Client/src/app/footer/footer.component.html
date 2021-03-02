@@ -1,0 +1,61 @@
+<!-- Footer -->
+<footer class="page-footer s-dark2-bg font-small special-color-dark pt-4">
+
+    <!-- Footer Elements -->
+    <div *ngIf='isLoaded' class="container">
+
+        <!-- Social buttons -->
+        <ul class="list-unstyled list-inline text-center">
+            <!-- Facebook -->
+            <li class="list-inline-item">
+                <a *ngIf='data[0].facebook' class=' m-1'
+                [href]="data[0].facebook"><img width='25' src="/assets/Icons/contact-icons/fb.png"
+                alt=""></a>
+            </li>
+            <!-- Twitter -->
+            <li class="list-inline-item">
+                <a *ngIf='data[1].twitter' class=' m-1'
+                    [href]="data[1].twitter"><img width='25' src="/assets/Icons/contact-icons/twitter.png"
+                        alt=""></a>
+            </li>
+            <!-- Instagram -->
+            <li class="list-inline-item">
+                <a *ngIf='data[2].instagram' class=' m-1'
+                [href]="data[2].instagram"><img width='25' src="/assets/Icons/contact-icons/insta.png"
+                alt=""></a>
+            </li>
+            <!-- Linked In -->
+            <li class="list-inline-item">
+                <a *ngIf='data[3].linkedin' class=' m-1'
+                [href]="data[3].linkedin"><img width='25' src="/assets/Icons/contact-icons/in.png"
+                alt=""></a>
+            </li>
+            <!-- Telegram -->
+            <li class="list-inline-item">
+                <a *ngIf='data[4].telegram' class=' m-2'
+                [href]="data[4].telegram"><img width='22' src="/assets/Icons/contact-icons/telegram.png"
+                alt=""></a>
+            </li>
+            <!-- Whatsapp -->
+            <li class="list-inline-item">
+                <a *ngIf='data[5].whatsapp[0]' (click)='openWhatsappMenu()' class='m-2'><img width='26'
+                src="/assets/Icons/contact-icons/whatsapp.png" alt=""></a>
+            </li>
+        </ul>
+        <!-- whatsappMenu -->
+        <app-whatsapp-menu></app-whatsapp-menu>
+    </div>
+    <!-- Footer Elements -->
+    <!-- language -->
+    <div class='text-center py-0'>
+        <!-- <app-languages class='d-inline-block py-0'></app-languages> -->
+        <div id="google_translate_element"></div>
+    </div>
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3 s-supp-cr-1">© 2020 Copyright:
+        <a class='s-supp-cr-4' href="#"> <img width='25' src="/assets/Icons/dark.png" alt=""> CodeClub</a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
+<!-- Footer -->

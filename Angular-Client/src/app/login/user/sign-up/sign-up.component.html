@@ -1,0 +1,65 @@
+<app-notifications class='position-absolute s-make-me-up'></app-notifications>
+<div id='signupFormHolder' class="s-dark-bg d-flex flex-column justify-content-center align-content-center">
+  <h2 class="text-center mb-5 s-supp-cr-1 s-no-outline"> Sign Up </h2>
+  <div class='container'>
+    <div class='row'>
+      <div class='col d-flex justify-content-center align-content-center'>
+        <form #signUpForm="ngForm" class='w-75' (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)">
+          <!-- full Name -->
+          <div class="form-group my-4">
+            <div class="input-group md-form form-sm form-2 pl-0 rounded">
+              <button disabled class="btn input-group-text s-icon-btn s-icon-user s-no-rounded-right s-dark2-bg border-0 rounded-left"></button>
+              <input type="text" #fullName="ngModel" [(ngModel)]="userService.selectedUser.fullName" name="fullName" placeholder="Full Name"
+              minlength="4"
+              [class.borderRed]="fullName.touched && !fullName.valid"
+              required  [ngClass]="{'invalid-textbox' :signUpForm.submitted && !fullName.valid }" 
+              class='form-control s-temp-btn my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left'>
+            </div>
+          </div>
+          <div *ngIf="signUpForm.submitted && !fullName.valid">
+            <label class="validation-message s-main-cr">This field is required.</label>
+          </div>
+          <!-- Email -->
+          <div class="form-group my-4">
+            <div class="input-group md-form form-sm form-2 pl-0 rounded">
+              <button disabled class="btn input-group-text s-icon-btn s-icon-email s-no-rounded-right s-dark2-bg border-0 rounded-left"></button>
+              <input type="text" #email="ngModel" [(ngModel)]="userService.selectedUser.email" name="email" placeholder="Email"
+              [class.borderRed]="email.touched && !email.valid"
+              required [pattern]="emailRegex"  [ngClass]="{'invalid-textbox' :signUpForm.submitted && !email.valid }"
+              class='form-control s-temp-btn my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left'>
+            </div>
+          </div>
+          <div *ngIf="signUpForm.submitted && email.errors">
+            <label *ngIf="email.errors.required" class="validation-message">This field is required.</label>
+            <label *ngIf="email.errors.pattern" class="validation-message">Invalid email address.</label>
+          </div>
+          <!-- Password -->
+          <div class="form-group my-4">
+            <div class="input-group md-form form-sm form-2 pl-0 rounded">
+              <button disabled class="btn input-group-text s-icon-btn s-icon-password s-no-rounded-right s-dark2-bg border-0 rounded-left"></button>
+              <input type="password" #password="ngModel" [(ngModel)]="userService.selectedUser.password" name="password" placeholder="Password"
+              [class.borderRed]="password.touched && !password.valid"
+              minlength="4" required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !password.valid }"
+              class='form-control s-temp-btn my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left'>
+            </div>
+          </div>
+          <div *ngIf="signUpForm.submitted && password.errors">
+            <label *ngIf="password.errors.required" class="validation-message">This field is required.</label>
+            <label *ngIf="password.errors.minlength" class="validation-message">Enter atleast 4 characters.</label>
+          </div>
+          <input [disabled]='signUpForm.invalid' type="submit" value="Sign Up" class='btn my-3 s-main-bg s-dark-cr rounded btn-lg s-submit w-100'>
+        </form>
+
+        <!-- Success message -->
+        <div class="success" *ngIf="showSucessMessage">
+          Saved successfully
+        </div>
+
+        <!-- Error message -->
+        <div class="alert" *ngIf="serverErrorMessages">
+          {{serverErrorMessages}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

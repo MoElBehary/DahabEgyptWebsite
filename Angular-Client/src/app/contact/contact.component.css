@@ -1,0 +1,58 @@
+.s-contact-map{
+    /* 56px nav height */
+    /* height: calc(100% - (20px + 56px)); */
+    /* width: 500px; */
+    top: calc(56px + 10px);
+    left: 0;
+    z-index: 2;
+    position: fixed;
+    box-shadow: 3px 3px 6px 0px rgba(34, 34, 34, .1);
+}
+.s-contact-content-holder{
+    /* height: 100%; */
+    /* overflow: hidden; */
+}
+.s-iframe-map{
+    width: 100%;
+    height: 100%;
+}
+.s-open-close-map-btn{
+  height: 180px;
+  margin-left: 26px;
+  transition: all ease-in-out .2s;
+  box-shadow: -3px 0px 5px 0px rgba(34, 34, 34, .0);
+  background-image: url('/assets/Icons/contact-icons/arrow-right.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.s-open-close-map-btn:hover{
+  opacity: 1;
+}
+@media (max-width: 992px) {
+  .s-contact-map{
+    position: static;
+  }
+  .s-contact-content-holder{
+      overflow: scroll;
+  }
+  .s-iframe-map {
+    border-radius: 0 0 .8rem .8rem !important;
+  }
+}
+.s-form-contact-input {
+  height: 60px;
+  /* width: 100%; */
+}
+.s-form-contact-input-icon{
+  width: 60px;
+}
+.s-form-contact-send{
+  /* bottom: 0px;
+  right: 0px; */
+}
+.s-form-contact-send-hr{
+   bottom: 55px;
+   right: 40px;
+   width: calc(100% - 80px);
+}

@@ -1,0 +1,51 @@
+<button id='modalSubCategOpenBtn' type="button" class="btn btn-primary d-none" data-toggle="modal"
+    data-target="#subCateg">
+</button>
+<div class="modal fade" id="subCateg" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered " role="document">
+        <div class="modal-content rounded s-dark2-bg">
+            <!-- Header -->
+            <div class="modal-header border-0 s-dark-bg rounded-top shadow-sm d-flex align-items-center p-4">
+                <h3 class='text-center m-auto s-supp-cr-1'><span class='s-main-cr~ light-yellow-cr text-uppercase'>{{selectesCategName}}</span> | Sub Categories</h3>
+            </div>
+            <div class='s-modal-holder'>
+                <!-- Body -->
+                <div class="modal-body pb-5">
+                    <!-- add new -->
+                    <div class='row p-5 mb-3 position-sticky s-add-new-holder s-dark2-bg'>
+                        <div class='col-12 p-0 rounded'>
+                            <div class="input-group md-form form-sm form-2 pl-0 rounded">
+                                <input #newSubCategInp class="form-control my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded s-add-new-inp"
+                                 (keyup.enter)='createSubCategories(newSubCategInp.value); refrishAddInp(newSubCategInp)' type="text" placeholder="New Sub Category">
+                                <div class="input-group-append rounded-right">
+                                    <button (click)='createSubCategories(newSubCategInp.value); refrishAddInp(newSubCategInp)' class="btn input-group-text s-add-new-btn s-green-bg border-0 rounded-right"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- sub Categories -->
+                    <div class='row px-5'>
+                        <div *ngFor='let subCategory of subCategories let i = index' class='col-12 p-0 mb-3 s-supp-cr-1 rounded'>
+                            <div class="input-group md-form form-sm form-2 pl-0 rounded">
+                                <input #subCategInp class="form-control my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded s-add-new-inp" type="text" placeholder="Set Name" [value]='subCategory'
+                                (blur)='updateSubCategName(i, subCategInp.value)' (keyup.enter)='updateSubCategName(i, subCategInp.value)'>
+                                <div class="input-group-append rounded-right">
+                                    <button
+                                       (click)='deleteSubCateg(i)' class="btn input-group-text s-sub-categ-delete-btn s-supp-bg-1-opt5 border-0 rounded-right"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- footer -->
+            <div class="modal-footer px-0">
+                <!-- Back -->
+                <div class='col-12 my-3 px-5'>
+                    <button type="button" class="btn rounded w-100 s-back-btn s-main-bg btn-lg" (click)='closeModal()'>Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

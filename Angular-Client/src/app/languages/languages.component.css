@@ -1,0 +1,19 @@
+.s-language-box{
+    width: 200px;
+    cursor: pointer;
+}
+.s-icon-btn{
+    width: 60px;
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.s-icon-tags{
+    background-image: url('/assets/Icons/settings/lang.png');
+}
+.s-bg-color{
+    background-color:#9870E4
+}
+.s-bg-color2{
+    background-color:#AF84FF
+}

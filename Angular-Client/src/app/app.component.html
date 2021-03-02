@@ -1,0 +1,5 @@
+<nav-bar *ngIf='!userService.isAdmin'></nav-bar>
+<app-admin-nav *ngIf='userService.isAdmin'></app-admin-nav>
+<ng-progress id="progressBar" [spinner]="false" [color]='progress_service.currentColor' [thick]='true'></ng-progress>
+<router-outlet></router-outlet>
+<app-footer></app-footer>

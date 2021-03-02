@@ -1,0 +1,119 @@
+<!-- Button trigger modal -->
+<button id='openMenuBtn' type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#exampleModalCenter">
+    Launch demo modal
+</button>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered " role="document">
+        <!-- Content -->
+        <div class="modal-content rounded animate-bottom s-dark2-bg">
+            <!-- Header -->
+            <div class="modal-header border-0 s-dark-bg rounded-top shadow-sm d-flex align-items-center">
+                <!-- Categories Products Switcher -->
+                <button type="button" class="btn s-main-bg rounded py-2 px-4 mr-3" (click)='switchProdOrCateg()'>{{prodOrCateg}}</button>
+                <!-- Search Bar -->
+                <div class="input-group md-form form-sm form-2 pl-0 s-supp-bg-1-opt5 rounded">
+                    <input class="form-control my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-left" type="text" placeholder="Search" aria-label="Search" [(ngModel)]='searchValue'>
+                    <div class="input-group-append rounded-right">
+                        <button class="btn input-group-text s-search-btn s-supp-bg-1-opt5 border-0 rounded-right"></button>
+                    </div>
+                </div>
+            </div>
+            <!-- Products -->
+            <div *ngIf='prodOrCateg == "Categories"' class='s-modal-holder'>
+                <div class='s-supp-bg-1 shadow-sm s-category-name text-center py-2 px-5 rounded-bottom position-sticky mx-auto mt-4'>{{CategoryName}}</div>
+                <!-- sub Categories -->
+                <div *ngIf='productsByCategories != ""' class='row mx-5 mt-3'>
+                    <div class='col-12 position-relative'>
+                        <div class='position-absolute s-dash d-none d-md-block s-dark2-bg'></div>
+                        <div class='s-sub-categories-holder d-flex align-items-center pl-5'>
+                            <div class=' d-flex m-auto'>
+                                <button (click)='selectAllSubCategories()'
+                                data-select='false'
+                                [class.s-sub-categories-selected_btns]='productBySubCateg == ""'
+                                class='btn s-dark-bg s-supp-cr-1 rounded py-2 px-4 mr-3 s-sub-categories-btns'>All</button>
+                                <button *ngFor='let subCategories of selectedSubCategOfCateg let i = index'
+                                (click)='selectProdsOfSubCateg(subCategories)'
+                                data-select='false'
+                                class='btn s-dark-bg s-supp-cr-1 rounded py-2 px-4 mr-3 s-sub-categories-btns'>{{subCategories}}</button>
+                                    <div class='s-dash-right px-3 d-none d-md-block s-dark2-bg'></div>
+                            </div>
+                        </div>
+                        <div class='position-absolute s-dash-right d-none d-md-block s-dark2-bg'></div>
+                    </div>
+                </div>
+                <div  class="modal-body d-flex flex-wrap justify-content-center">
+                    <!-- All Products -->
+                    <ng-container *ngIf='productsByCategories == ""'>
+                        <div *ngFor='let product of products | filter:searchValue'
+                            class="text-center m-2 s-supp-bg-1-opt5 s-product-box-holder  rounded position-relative"
+                            (click)='outputProductId(product._id)' data-dismiss="modal">
+                            <div [ngStyle]="product.prod_colors[0].prod_images != undefined ? {   
+                                    'background-image' :'url('+ pro_service.getUrl(product.prod_colors[0].prod_images[0].prod_side_img) + ')'
+                                } : false" class="card-img-top s-product-box rounded-top shadow-sm m-auto "></div>
+                            <p class='s-product-title position-absolute s-supp-cr-1 lead text-center s-white-50-bg~ s-dark-50-bg m-0 py-2 rounded-bottom'>{{product.prod_name}}</p>
+                        </div>
+                    </ng-container>
+                    <!-- Products by Categories -->
+                    <ng-container *ngIf='productsByCategories != "" && productBySubCateg == "" '>
+                        <div *ngFor='let product of productsByCategories | filter:searchValue'
+                            class="text-center m-2 s-supp-bg-1-opt5 s-product-box-holder  rounded position-relative"
+                            (click)='outputProductId(product._id)' data-dismiss="modal">
+                            <div [ngStyle]="product.prod_colors[0].prod_images != undefined ? {   
+                                    'background-image' :'url('+ pro_service.getUrl(product.prod_colors[0].prod_images[0].prod_side_img) + ')'
+                                } : false" class="card-img-top s-product-box rounded-top shadow-sm m-auto "></div>
+                            <p class='s-product-title position-absolute s-supp-cr-1 lead text-center s-white-50-bg~ s-dark-50-bg m-0 py-2 rounded-bottom'>{{product.prod_name}}</p>
+                        </div>
+                    </ng-container>
+                    <!-- Products by sub Categories -->
+                    <ng-container *ngIf='productsByCategories != "" && productBySubCateg != ""  '>
+                        <div *ngFor='let product of productBySubCateg | filter:searchValue'
+                            class="text-center m-2 s-supp-bg-1-opt5 s-product-box-holder  rounded position-relative"
+                            (click)='outputProductId(product._id)' data-dismiss="modal">
+                            <div [ngStyle]="product.prod_colors[0].prod_images != undefined ? {   
+                                    'background-image' :'url('+ pro_service.getUrl(product.prod_colors[0].prod_images[0].prod_side_img) + ')'
+                                } : false" class="card-img-top s-product-box rounded-top shadow-sm m-auto "></div>
+                            <p class='s-product-title position-absolute s-supp-cr-1 lead text-center s-white-50-bg~ s-dark-50-bg m-0 py-2 rounded-bottom'>{{product.prod_name}}</p>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+            <!-- categories -->
+            <div *ngIf='prodOrCateg == "Products"' class='s-modal-holder'>
+                <div  class="modal-body d-flex flex-wrap justify-content-center">
+                    <ng-container *ngFor='let category of categories | filter:searchValue let i = index'>
+                        <!-- All Categories -->
+                        <div *ngIf='i <= 0' class='col-lg-6 col-12 my-4 order-lg-1 order-2'>
+                            <div (click)='selectAllCategory() ; switchProdOrCateg()'
+                                class="rounded s-add-category-box mx-4 my-2 d-flex justify-content-center align-items-center p-1 s-all-Categories s-category-box">
+                                <div class='s-all-categories-box-obacity rounded d-flex justify-content-center align-items-center'>
+                                    <p class='h1 text-center s-white-cr'>All</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Category Box -->
+                        <div class='col-lg-6 col-12 my-4 order-lg-1 order-2'>
+                            <div 
+                            (click)='selectCategory(category._id, category.categ_name); switchProdOrCateg(); selectSubCategOfCateg(category.sub_categories) '
+                            [ngStyle]="category.categ_image ? {   
+                            'background-image' :'url('+ categ_service.getUrl(category.categ_image) + ')',
+                            ' background-repeat': 'no-repeat',
+                            'background-position': 'center',
+                            'background-size': 'cover',
+                            'border': 'none'
+                            }: false" [class.s-category-box]='category.categ_image'
+                            class="rounded s-add-category-box mx-4 my-2 d-flex justify-content-center align-items-center p-1">
+                                <div class='s-category-box-obacity rounded d-flex justify-content-center align-items-center'>
+                                    <p class='h1 text-center s-white-cr'>{{category.categ_name}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+            <!-- <div class="modal-footer">
+            </div> -->
+        </div>
+    </div>
+</div>
+<!-- ng-container -->

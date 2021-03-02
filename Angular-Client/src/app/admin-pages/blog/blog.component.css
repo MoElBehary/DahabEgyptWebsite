@@ -1,0 +1,16 @@
+.s-icons{
+    min-width: 25px;
+    min-height: 25px;
+    background-position: center;
+    background-size: 22px;
+    background-repeat: no-repeat;
+}
+.s-all-icon{
+    background-image: url(../../../assets/Icons/admin-blog/all.png);
+}
+.s-topic-icon{
+    background-image: url(../../../assets/Icons/admin-blog/new-topic.png);
+}
+.s-tags-icon{
+    background-image: url(../../../assets/Icons/admin-blog/tags.png);
+}

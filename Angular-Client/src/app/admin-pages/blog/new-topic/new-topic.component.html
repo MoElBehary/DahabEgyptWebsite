@@ -1,0 +1,75 @@
+<app-notifications class='position-relative s-make-me-up'></app-notifications>
+<!-- Controller Bar -->
+<div class='nav nav-pill my-3 row s-controller-bar rounded s-dark-bg d-flex' id="pills-tab" role="tablist">
+    <!-- settings button (Settings) -->
+    <div *ngIf='!tap' (click)='toogleTopicTaps()' aria-selected="true" id="pills-settings-tab" data-toggle="pill" href="#pills-settings" role="tab" aria-controls="pills-settings"
+    class='active s-supp-bg-1-opt5  s-btn-tem-h rounded-left d-flex justify-content-center align-items-center s-controller-bar-btns'>
+        <i class='btn s-btn-tem-h s-settings-icon s-icons'></i>
+    </div>
+    <!-- settings button (summernote) -->
+    <div *ngIf='tap' (click)='toogleTopicTaps()' aria-selected="false" id="pills-editor-tab" data-toggle="pill" href="#pills-editor" role="tab" aria-controls="pills-editor"
+    class='s-main-bg s-btn-tem-h rounded-left d-flex justify-content-center align-items-center s-controller-bar-btns'>
+        <i class='btn s-btn-tem-h s-settings-note-icon'></i>
+    </div>
+    <!-- publish -->
+    <button *ngIf='topicState' (click)='createNewTopic(); outPutTopicIsDel(); postCategImg()' class='s-btn-tem-h s-publish-btn btn ml-auto mr-1 s-main-cr px-5 s-supp-bg-1-opt5 d-flex justify-content-center align-items-center'>
+        Publish
+    </button>
+    <button *ngIf='!topicState' (click)='updateTopic(); postCategImg()' class='s-btn-tem-h s-publish-btn btn ml-auto mr-1 s-main-cr px-5 s-supp-bg-1-opt5 d-flex justify-content-center align-items-center'>
+        Update
+    </button>
+    <!-- delete -->
+    <button (click)='deleteTopic();  outPutTopicIsDel()' class='s-btn-tem-h s-del-btn btn p-0 s-supp-bg-1-opt5 rounded-right d-flex justify-content-center align-items-center s-controller-bar-btns'>
+        <i class='btn s-btn-tem-h s-trash-icon s-icons'></i>
+    </button>
+    
+</div>
+<!-- topic body -->
+<div class="tab-content s-dark2-bg rounded-bottom s-supp-cr-4" id="pills-tabContent">
+    <!-- topic settings -->
+    <div id="pills-settings" role="tabpanel" aria-labelledby="pills-settings-tab" class='active show tab-pane fade row mt-4 p-3 s-dark-bg rounded s-topic-body'>
+        <div class='row h-100'>
+            <div class='col-lg-7 col-12 pl-lg-5 d-flex flex-column justify-content-center align-items-center bg-danger~'>
+                <!-- name inp -->
+                <div class="input-group mb-3 md-form form-sm form-2 pl-0 rounded">
+                    <i disabled class="btn input-group-text s-icon-btn s-icon-title s-no-rounded-right s-dark2-bg border-0 rounded-left"></i>
+                    <input id='topicNameInp' type="text" name="Section Title" placeholder="Topic Name..." required [value]='selectedTopic.topic_name ? selectedTopic.topic_name : ""'
+                    class='form-control s-temp-btn  my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left'>
+                </div>
+                <!-- tags -->
+                <div class="input-group mb-3 md-form form-sm form-2 pl-0 rounded">
+                    <i disabled class="btn input-group-text s-icon-btn s-icon-tags s-no-rounded-right s-dark2-bg border-0 rounded-left"></i>
+                    <select #topicTagInp
+                     (change)='selectMe(topicTagInp.value)'
+                      class="custom-select form-control s-btn-tem-h  my-0 py-4~ px-4 s-supp-bg-1-opt5 s-supp-cr-2 border-0 rounded-right s-no-rounded-left" id="inputGroupSelect01"
+                    >
+                        <option [selected]='selectedTopic.topic_tag ? false : true' disabled>Topic Tag...</option>
+                        <option *ngFor='let tag of tags' [value]="tag._id" [selected]='selectedTopic.topic_tag == tag._id'>{{tag.tag_name}}</option>
+                    </select>
+                </div>
+            </div>
+            <!-- image -->
+            <div class=' col-lg-5 col-12 d-flex flex-lg-column justify-content-center align-items-center'>
+                    <div #sideImageBox
+                        [ngStyle]="renderedIMG ? {   
+                                    'background-image' :'url('+ renderedIMG + ')',
+                                    ' background-repeat': 'no-repeat',
+                                    'background-position': 'center',
+                                    'background-size': 'cover',
+                                    'border': 'none'
+                                }: false" data-type='side-image-showBox'
+                        class='position-relative m-2 s-side-image s-page-opacity rounded'>
+                        <input title='Add Image' #topicImageInp type="file" class='s-side-image s-opacity-0 rounded' data-type='side-img-inp'
+                            data-case='NEW'
+                            (change)='readURL($event); selectImage($event, topicImageInp.value)'>
+                    </div>
+            </div>
+            
+        </div>
+    </div>
+    <!-- summernote -->
+    <div id="pills-editor" role="tabpanel" aria-labelledby="pills-editor-tab" class='tab-pane fade row mt-4 p-3 s-white-bg rounded s-topic-body'>
+        <div class="summernote" [ngxSummernote]='config' ></div>
+<!-- <div [ngxSummernoteView]="content"></div> -->
+    </div>
+</div>

@@ -1,0 +1,101 @@
+<!-- <div class='s-topic-holder'> -->
+    <div class='row'>
+        <ng-container *ngIf='topics != ""'>
+            <!-- Tool bar -->
+            <div class='container-fluid py-3  position-sticky s-tool-bar-holder s-dark2-bg bg-danger~'>
+                <div class='row rounded shadow-sm'>
+                    <!-- Tag name -->
+                    <div class='col-md-2 col-12 p-0 rounded-left'>
+                        <button class='btn light-yellow-bg s-supp-cr-2~ s-dark-cr rounded-left py-2 px-4 mr-3 s-selected-categ-btns w-100'
+                            [title]='tagName'>{{tagName}}</button>
+                    </div>
+                    <!-- Tags btns -->
+                    <div class='col-md-6 col-12 p-0 my-2 my-md-0 s-supp-bg-1-opt5 position-relative'>
+                        <div class='position-absolute s-supp-bg-1-opt5 s-dash d-none d-md-block'></div>
+                        <div class='s-categories-holder d-flex align-items-center'>
+                            <div class='s-supp-bg-1-opt5 s-dash-right d-none d-md-block px-3'></div>
+                            <button id='allTagsBtn' #allBtn (click)='selectAllTags(); styleTagBtns(allBtn)'
+                                data-btn='tag-btn'
+                                class='btn s-dark-bg s-supp-cr-2 rounded py-2 px-4 mr-3 s-categories-btns s-selected-tag-btn'>All</button>
+                            <button #tagBtn *ngFor='let tag of tags let i = index'
+                                data-btn='tag-btn'
+                                (click)='selectTag(tag._id, tag.tag_name); styleTagBtns(tagBtn)'
+                                class='btn s-dark-bg s-supp-cr-2 rounded py-2 px-4 mr-3 s-categories-btns'>{{tag.tag_name}}</button>
+                            <div class='s-supp-bg-1-opt5 s-dash-right d-none d-md-block pr-3'></div>
+                        </div>
+                        <div class='position-absolute s-supp-bg-1-opt5 s-dash-right d-none d-md-block'></div>
+                    </div>
+                    <!-- search Bar -->
+                    <div class='col p-0 s-supp-bg-1-opt5 rounded-right'>
+                        <div class="input-group md-form form-sm form-2 pl-0 s-supp-bg-3~ rounded-right">
+                            <input class="form-control my-0 py-4 px-4 s-dark-bg border-0 s-serach-bar " type="text" placeholder="Search..."
+                                aria-label="Search" [(ngModel)]='searchValue'>
+                            <div class="input-group-append rounded-right">
+                                <button class="btn input-group-text s-search-btn s-dark-bg border-0 rounded-right"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- All Topics -->
+            <ng-container *ngIf='!selectedTopicsByTag'>
+                <div *ngFor='let topic of topics | filter:searchValue' (click)='clickTopic(topic._id)' class='s-blog-post-box col-12 d-flex flex-md-row flex-column s-dark-bg my-2 p-4 rounded'>
+                    <!-- image -->
+                    <div #sideImageBox [ngStyle]="topic.topic_image ? {   
+                        'background-image' :'url('+ blogTopics_service.getUrl(topic.topic_image) + ')',
+                        ' background-repeat': 'no-repeat',
+                        'background-position': 'center',
+                        'background-size': 'cover',
+                        'border': 'none'
+                    }: false" data-type='side-image-showBox'
+                    class='position-relative s-side-image s-page-opacity rounded s-dark2-bg'>
+                    </div>
+                    <!-- content -->
+                    <div class='p-4 s-blog-post-text-box'>
+                        <p class='h3 s-supp-cr-4'>{{topic.topic_name}}</p>
+                        <ng-container *ngFor='let tag of tags'>
+                            <p *ngIf='tag._id == topic.topic_tag' class='h6 s-main-bg py-1 px-4 rounded s-dark2-cr d-inline-block'>{{tag.tag_name}}</p>
+                        </ng-container>
+                        <article class='s-supp-cr-1' [innerHTML]=topic.topic_content>
+                        </article>
+                    </div>
+                </div>
+            </ng-container>
+            <!-- Topics By Tag -->
+            <ng-container *ngIf='selectedTopicsByTag'>
+                <div *ngFor='let topic of selectedTopicsByTag | filter:searchValue' (click)='clickTopic(topic._id)' class='s-blog-post-box col-12 d-flex s-dark-bg my-2 p-4 rounded'>
+                    <!-- image -->
+                    <div #sideImageBox [ngStyle]="topic.topic_image ? {   
+                        'background-image' :'url('+ blogTopics_service.getUrl(topic.topic_image) + ')',
+                        ' background-repeat': 'no-repeat',
+                        'background-position': 'center',
+                        'background-size': 'cover',
+                        'border': 'none'
+                    }: false" data-type='side-image-showBox'
+                    class='position-relative s-side-image s-page-opacity rounded s-dark2-bg'>
+                    </div>
+                    <!-- content -->
+                    <div class='p-4 s-blog-post-text-box'>
+                        <p class='h3 s-supp-cr-4'>{{topic.topic_name}}</p>
+                        <ng-container *ngFor='let tag of tags'>
+                            <p *ngIf='tag._id == topic.topic_tag' class='h6 s-main-bg py-1 px-4 rounded s-dark2-cr d-inline-block'>{{tag.tag_name}}</p>
+                        </ng-container>
+                        <article class='s-supp-cr-1' [innerHTML]=topic.topic_content>
+                        </article>
+                    </div>
+                </div>
+                <!-- No Topics To show -->
+                <div *ngIf='selectedTopicsByTag == ""' class='d-flex flex-column col-12 my-2 p-4 '>
+                    <p class='h3 text-center s-supp-cr-1 mb-4'>No Topics To Show !</p>
+                    <button (click)='createOneOutPut()'
+                        class="s-supp-green-bg s-create-one-btn align-self-center px-5 text-center s-temp-btn btn rounded s-supp-cr-4">Create
+                        One</button>
+                </div>
+            </ng-container>
+        </ng-container>
+        <!-- No Topics To show -->
+        <div *ngIf='topics == ""' class='d-flex flex-column col-12 my-2 p-4 '>
+            <p class='h3 text-center s-supp-cr-1 mb-4'>No Topics To Show !</p>
+            <button (click)='createOneOutPut()' class="s-supp-green-bg s-create-one-btn align-self-center px-5 text-center s-temp-btn btn rounded s-supp-cr-4">Create One</button>
+        </div>
+    </div>

@@ -1,0 +1,75 @@
+/* Slider ===START */
+.s-slider-image{
+    height: 100%;
+    /* background-image: url('/assets/imgs/categories/slider/slide1.jpg'); */
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+/* Slider ===END */
+
+.s-add-category-box{
+    height: 350px;
+    transition: background-color ease-in-out .2s;
+}
+.s-add-category-box:hover {
+    height: 350px;
+    border: none;
+    cursor: pointer;
+    color : white !important;
+}
+.s-add-category-butt{
+    font-size: 60px;
+}
+.s-category-box-obacity{
+    width: 100%;
+    height: 100%;
+    background: rgba(34, 34, 34, .2);
+    transition: all ease-in-out .2s;
+}
+.s-category-box-obacity:hover{
+    background: rgba(34, 34, 34, .5);
+}
+.s-category-box:hover{
+    transition: all ease-in-out .2s;
+     box-shadow: 0px 0px 0px 2px rgba(255, 251, 160, 1);
+    cursor: pointer;
+}
+.s-all-categories-box-obacity{
+    width: 100%;
+    height: 100%;
+    background: rgba(34, 34, 34, .8);
+    transition: all ease-in-out .2s;
+}
+.s-all-categories-box-obacity:hover{
+    background: rgba(34, 34, 34, .9);
+}
+.s-all-Categories{
+    background-image: url('/assets/Icons/admin-products/categories.png'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+/* hot sections */
+.s-hot-box{
+  cursor: pointer;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.s-large-hot-box{
+  height: 700px;
+  background-image : url(../../assets/imgs/categories//hotc1.jpg) ;
+}
+.s-small-hot-box{
+  height: calc(350px - 0.5rem);
+  background-image : url(../../assets/imgs/categories/hotc3.jpg) ;
+}
+.s-small-hot-box-2{
+  background-image : url(../../assets/imgs/categories/hotc2.jpg) ;
+}
+.s-hot-desc{
+  max-height: 200px;
+  overflow: scroll;
+}

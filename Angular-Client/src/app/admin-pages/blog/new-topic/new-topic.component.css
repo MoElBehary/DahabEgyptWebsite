@@ -1,0 +1,92 @@
+.s-make-me-up{
+    z-index: 4000;
+}
+.s-controller-bar{
+    height: 48px;
+}
+.s-icons{
+    background-position: center;
+    background-size: 30px;
+    background-repeat: no-repeat;
+}
+.s-settings-icon{
+    background-image: url(../../../../assets/Icons/admin-blog/settings.png);
+}
+.s-settings-note-icon{
+    background-position: center;
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-image: url(../../../../assets/Icons/admin-blog/type.png);
+}
+.s-trash-icon{
+    background-size: 25px;
+    background-image: url(../../../../assets/Icons/admin-blog/red-trash.png);
+}
+.s-controller-bar-btns{
+    transition: all ease-in-out .2s;
+    cursor: pointer;
+    width: 60px;
+    opacity: .8;
+}
+.s-controller-bar-btns:hover{
+    opacity: 1;
+}
+.s-topic-body{
+    height: 400px;
+}
+.note-toolbar{
+    background: black !important;
+}
+/*  */
+.s-icon-btn{
+    width: 60px;
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.s-icon-title{
+     background-image: url('/assets/Icons/admin-about/title.png');
+}
+.s-icon-tags{
+    background-image: url('/assets/Icons/admin-blog/tags.png');
+}
+/*  */
+.s-side-image{
+    border: 4px dashed rgba(152, 155, 155, 1);
+    /* min-width: 100px !important;
+    min-height: 100px !important;
+    max-width: 100px !important;
+    max-height: 100px !important; */
+    width : 230px ;
+    height : 230px ;
+    background-image: url('/assets/Icons/admin-products/addNewImg.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 40px;
+    animation-duration: 2s;
+    animation-delay: .1s;
+    animation-iteration-count: 1;
+    overflow: hidden;
+}
+.s-side-image:hover {
+  border: 4px dashed #989B9B;
+  cursor: pointer;
+
+}
+.s-page-opacity{
+    cursor: pointer;
+    transition: all ease-in-out .1s;
+    opacity: .6 !important;
+}
+.s-page-opacity:hover {
+    cursor: pointer;
+    transition: all ease-in-out .1s;
+    opacity: 1 !important;
+}
+.s-publish-btn:hover{
+  background-color:#FFFDCF!important;
+  color: #222222 !important;
+}
+.s-del-btn:hover{
+    background-color: #dc3545 !important;
+}

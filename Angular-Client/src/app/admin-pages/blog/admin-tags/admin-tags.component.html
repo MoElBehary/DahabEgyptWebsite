@@ -1,0 +1,23 @@
+<!-- <div id='blogTagsHolder' class='container-fluid s-dark-bg p-4 d-flex flex-column'> -->
+    <app-notifications class='position-relative s-make-me-up'></app-notifications>
+    <div class='container'>
+        <div class='row flex-wrap py-3'>
+            <!-- Data -->
+            <div *ngFor='let tag of tags let i = index'  class='col-lg-4 col-md-6 col-12 p-2'>
+                <div #tagBox (mouseenter) ="showDeleteBtn(delBtn) "  (mouseleave) ="HideDeleteBtn(delBtn)" class='s-tag-box d-flex position-relative overflow-hidden'>
+                    <i (click)='targetTagInp(tagInp)' class='btn h-100 w-25 mr-1 s-dark-bg s-new-tag-icon-box rounded-left'></i>
+                    <input #tagInp (keyup.enter)='updateTags(i)' (blur)='updateTags(i)' [(ngModel)]='tag.tag_name' class='s-no-border s-tag-inp h-100 w-75 p-4 s-dark-bg rounded-right s-supp-cr-2 text-left s-inp-font-larg' placeholder="Tag Name..." type="text">
+                    <i #delBtn (click)='deleteTag(i, delBtn, tagBox)' (mouseenter) ="fullSizeDeleBtn(delBtn)" (mouseleave)='showDeleteBtn(delBtn)' class='s-del-tag-btn btn position-absolute bg-danger rounded'></i>
+                </div>
+            </div>
+            <!-- Crate New -->
+            <div class='col-lg-4 col-md-6 col-12 p-2'>
+                <div class='s-tag-box d-flex s-new-tag-box rounded'>
+                    <i (click)='targetTagInp(newTagName)' class='btn h-100 w-25 mr-1 s-dark2-bg s-tag-icon-box rounded-left'></i>
+                    <input #newTagName (keyup.enter)='createNewTag(newTagName.value); emptyNewBtnTag(newTagName)' class='s-no-border s-tag-inp h-100 w-75 p-4 s-dark2-bg rounded-right s-supp-cr-2 text-left s-inp-font-larg' placeholder="Tag Name..." type="text">
+                </div>
+            </div>
+
+        </div>
+    </div>
+<!-- </div> -->

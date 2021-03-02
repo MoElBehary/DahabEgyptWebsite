@@ -1,0 +1,49 @@
+<div id='blogHolder' class='container-fluid s-dark-bg p-4 d-flex flex-column'>
+    <div class='container'>
+        <!-- Head -->
+        <div class='row'>
+            <div class='col'>
+                <p class='h1 pt-4 px-5 s-supp-cr-2 text-uppercase text-lg-left text-center'>Blog<span
+                        class='h3 text-capitalize s-supp-cr-1'> Page</span></p>
+                <hr class='s-dark2-bg mx-5 my-4'>
+            </div>
+        </div>
+        <!-- navigation -->
+        <p class="nav-link s-supp-cr-1 lead m-0 pb-4 d-block d-lg-none text-center">SECTIONS</p>
+        <ul class="px-5 nav nav-pills mb-3 s-dark2-bg d-flex flex-md-row flex-column align-items-center py-4 px-0 rounded-top justify-content-lg-start justify-content-center"
+            id="pills-tab" role="tablist">
+            <li class="nav-item mr-5 d-lg-block d-none">
+                <p class="nav-link s-supp-cr-1 lead m-0">SECTIONS</p>
+            </li>
+            <!-- All -->
+            <li class="nav-item mx-2">
+                <a (click)='refreshAllData(); navigateToBlogState(); resetTagBarAtAll()' class="d-flex nav-link s-temp-btn btn rounded s-supp-cr-4 active" 
+                    aria-selected="true" id="pills-all-tab" data-toggle="pill" href="#pills-all"
+                    role="tab" aria-controls="pills-all"><i class='s-icons s-all-icon mr-3'></i>All</a>
+            </li>
+            <!-- New Topic -->
+            <li class="nav-item mx-2">
+                <a (click)='stlyeSummerNote(); getAllTags(); navigateToBlogState()' class="d-flex nav-link s-temp-btn btn rounded s-supp-cr-4 " aria-selected="false" id="pills-topic-tab"
+                    data-toggle="pill" href="#pills-topic" role="tab" aria-controls="pills-topic">
+                    <i class='s-icons mr-3'
+                    [ngStyle]='blogState == "New Topic" ? {
+                        "background-image": "url(../../../assets/Icons/admin-blog/new-topic.png)"
+                    } : {"background-image": "url(../../../assets/Icons/admin-blog/update-topic.png)"}'
+                    ></i>
+                    {{blogState}}</a>
+            </li>
+            <!-- Tags -->
+            <li class="nav-item mx-2">
+                <a (click)='navigateToBlogState()' class="d-flex nav-link s-temp-btn btn rounded s-supp-cr-4 "
+                    aria-selected="false" id="pills-tags-tab" data-toggle="pill" href="#pills-tags"
+                    role="tab" aria-controls="pills-tags"><i class='s-icons s-tags-icon mr-3'></i>Tags</a>
+            </li>
+            
+        </ul>
+        <div class="tab-content s-dark2-bg rounded-bottom p-4 s-supp-cr-4" id="pills-tabContent">
+            <div class="tab-pane fade mx-lg-5 mx-2 show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab"><app-all (clickTopicEvent)='openUpdateTopic($event)' (createOneEvent)='createOne($event)'></app-all></div>
+            <div class="tab-pane mx-lg-5 mx-2 fade" id="pills-topic" role="tabpanel" aria-labelledby="pills-topic-tab"><app-new-topic (topicIsDel)='navigateToBlogState()'></app-new-topic></div>
+            <div class="tab-pane mx-lg-5 mx-2 fade" id="pills-tags" role="tabpanel" aria-labelledby="pills-tags-tab"><app-admin-tags ></app-admin-tags></div>
+        </div>
+    </div>
+</div>

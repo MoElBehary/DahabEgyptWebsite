@@ -1,0 +1,226 @@
+<div id='contactHolder' class='container-fluid s-dark-bg p-4 d-flex flex-column'>
+    <app-notifications></app-notifications>
+    <div *ngIf='isloaded' class='container'>
+        <!-- Head -->
+        <div class='row'>
+            <div class='col'>
+                <p class='h1 pt-4 px-5 s-supp-cr-2 text-uppercase text-lg-left text-center'>Contact Us <span class='h3 text-capitalize s-supp-cr-1'>Page</span></p>
+                <hr class='s-dark2-bg mx-5 my-4'>
+            </div>
+        </div>
+        <!-- Body -->
+        <div class='row'>
+            <div class='col'>
+                <!-- navigation -->
+                <p class="nav-link s-supp-cr-1 lead m-0 pb-4 d-block d-lg-none text-center">SECTIONS</p>
+                <ul class="px-5 nav nav-pills mb-3 s-dark2-bg d-flex flex-row align-items-center py-4 px-0 rounded-top justify-content-lg-start justify-content-center"
+                    id="pills-tab" role="tablist">
+                    <li class="nav-item mr-5 d-lg-block d-none">
+                        <p class="nav-link s-supp-cr-1 lead m-0">SECTIONS</p>
+                    </li>
+                    <li *ngFor='let title of sectionTitles let i = index' class="nav-item mx-2">
+                        <a class="nav-link s-temp-btn  btn rounded s-nav-btns s-supp-cr-4" [class.active]='i == 0'
+                            [attr.aria-selected]="i == 0 ? true : false" id="pills-home-tab" data-toggle="pill"
+                            [href]="'#tab-' + title" role="tab"
+                            [attr.aria-controls]="title">{{title}}</a>
+                    </li>
+                </ul>
+                <!-- From Control -->
+                <div class="tab-content s-dark2-bg rounded-bottom p-4 s-supp-cr-4" id="pills-tabContent">
+                    <!-- Map Section -->
+                    <div class="tab-pane fade show mx-lg-5 mx-2 active pb-4"
+                    [attr.id]="'tab-' + sectionTitles[0]" role="tabpanel"
+                    [attr.aria-labelledby]="'pills-'+ sectionTitles[0] +'-tab'">
+                        <!-- Google maps  InSec -->
+                        <div class='my-2'>
+                            <label class='my-2 s-supp-cr-1' for="">Google Maps</label>
+                            <!-- Map Src Inp -->
+                            <div class="input-group md-form form-sm form-2 pl-0 rounded">
+                                <i disabled class="btn input-group-text s-icon-btn s-icon-googleMap s-no-rounded-right s-dark-bg border-0 rounded-left"></i>
+                                <input #sectionTitle type="text" name="Section Title" placeholder="google Maps Sorce... " required
+                                    [(ngModel)]='contactSections[0].map_location'
+                                    class='form-control s-temp-btn  my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left'>
+                            </div>
+                        </div>                                
+                    </div>
+                    <!-- contacts Section -->`
+                    <div class="tab-pane fade show mx-lg-5 mx-2 pb-4"
+                    [attr.id]="'tab-' + sectionTitles[1]" role="tabpanel"
+                    [attr.aria-labelledby]="'pills-'+ sectionTitles[1] +'-tab'">
+                    <!-- address inSec -->
+                        <div class='my-2'>
+                            <label class='my-2 s-supp-cr-1' for="">Address</label>
+                            <!-- address Inp -->
+                            <div class="input-group md-form form-sm form-2 pl-0 rounded">
+                                <i disabled class="btn input-group-text s-icon-btn s-icon-address s-no-rounded-right s-dark-bg border-0 rounded-left"></i>
+                                <input #sectionTitle type="text" name="Section Title" placeholder="Company Address" required [(ngModel)]='contactSections[0].contact_info.address[0]'
+                                    class='form-control s-temp-btn  my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left'>
+                            </div>
+                        </div>
+                    <!-- Contact Details InSec -->
+                        <div class='my-2'>
+                            <label class='my-2 s-supp-cr-1' for="">Contact Details</label>
+                            <!--  Contact Details Inp -->
+                            <div class="input-group md-form form-sm form-2 pl-0 rounded">
+                                <i disabled class="btn input-group-text s-icon-btn s-icon-mail s-no-rounded-right s-dark-bg border-0 rounded-left"></i>
+                                <input #sectionTitle type="text" name="Section Title" placeholder="Company Email..." required [(ngModel)]='contactSections[0].contact_info.Emails[0]'
+                                    class='form-control s-temp-btn  my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left'>
+                            </div>
+                        </div>
+                    <!-- phone InSec -->
+                        <div class='my-2'>
+                            <label class='my-2 s-supp-cr-1' for="">Phone</label>
+                            <!-- Phone inps -->
+                            <div *ngFor='let phoneNumb of contactSections[0].contact_info.phone let i = index'
+                                class="input-group md-form form-sm form-2 pl-0 rounded mb-3">
+                                <i disabled
+                                    class="btn input-group-text s-icon-btn s-icon-phone s-no-rounded-right s-dark-bg border-0 rounded-left"></i>
+                                <input #whtsappInps type="text" name="Section Title" placeholder="Company Phone..." required
+                                    [value]='contactSections[0].contact_info.phone[i]'
+                                    (blur)='updateCompanyPhoneNum(i, whtsappInps.value)' (keyup.enter)='updateCompanyPhoneNum(i, whtsappInps.value)'
+                                    class='form-control s-temp-btn  my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right~ s-no-rounded-left'>
+                                <div class="input-group-append rounded-right">
+                                    <button (click)='deleteCompanyPhoneNum(i)'
+                                        class="btn input-group-text s-delete s-supp-bg-1-opt5 border-0 rounded-right"></button>
+                                </div>
+                            </div>
+                            <!-- Phone inp // Add new -->
+                            <div class="input-group md-form form-sm form-2 pl-0 rounded mb-3~">
+                                <i disabled
+                                    class="btn input-group-text s-icon-btn  s-icon-phone s-no-rounded-right s-dark-bg border-0 rounded-left"></i>
+                                <input #phoneInp type="text" name="Section Title" placeholder="Company Phone..." required
+                                    (keyup.enter)='createNewCompanyPhoneNum(phoneInp.value); refreshAddInp(phoneInp)'
+                                    class='form-control s-temp-btn  my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right~ s-no-rounded-left'>
+                                <!-- +BTN -->
+                                <div class="input-group-append rounded-right">
+                                    <button (click)='createNewCompanyPhoneNum(phoneInp.value); refreshAddInp(phoneInp)'
+                                        class="btn input-group-text s-green-bg border-0 rounded-right s-add-new"></button>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- social Media  InSec -->
+                        <div class='my-2'>
+                            <label class='my-2 s-supp-cr-1' for="">Social Media</label>
+                            <!--  faceBook Inp -->
+                            <div class="input-group md-form form-sm form-2 pl-0 rounded mb-3">
+                                <i disabled class="btn input-group-text s-icon-btn s-icon-facebook s-no-rounded-right s-dark-bg border-0 rounded-left"></i>
+                                <input #sectionTitle type="text" name="Section Title" placeholder="Facebook Account..." required [(ngModel)]='contactSections[0].contact_info.socialMedia[0].facebook'
+                                    class='form-control s-temp-btn  my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left'>
+                            </div>
+                            <!-- twitter inp -->
+                            <div class="input-group md-form form-sm form-2 pl-0 rounded mb-3">
+                                <i disabled class="btn input-group-text s-icon-btn s-icon-twitter s-no-rounded-right s-dark-bg border-0 rounded-left"></i>
+                                <input #sectionTitle type="text" name="Section Title" placeholder="Twitter Account..." required [(ngModel)]='contactSections[0].contact_info.socialMedia[1].twitter'
+                                    class='form-control s-temp-btn  my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left'>
+                            </div>
+                            <!-- instagram inp -->
+                            <div class="input-group md-form form-sm form-2 pl-0 rounded mb-3">
+                                <i disabled class="btn input-group-text s-icon-btn s-icon-instagram s-no-rounded-right s-dark-bg border-0 rounded-left"></i>
+                                <input #sectionTitle type="text" name="Section Title" placeholder="Instagram Account..." required [(ngModel)]='contactSections[0].contact_info.socialMedia[2].instagram'
+                                    class='form-control s-temp-btn  my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left'>
+                            </div>
+                            <!-- in inp -->
+                            <div class="input-group md-form form-sm form-2 pl-0 rounded mb-3">
+                                <i disabled class="btn input-group-text s-icon-btn s-icon-in s-no-rounded-right s-dark-bg border-0 rounded-left"></i>
+                                <input #sectionTitle type="text" name="Section Title" placeholder="linkedIn Account..." required [(ngModel)]='contactSections[0].contact_info.socialMedia[3].linkedin'
+                                    class='form-control s-temp-btn  my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left'>
+                            </div>
+                            <!-- telegram inp -->
+                            <div class="input-group md-form form-sm form-2 pl-0 rounded mb-3">
+                                <i disabled class="btn input-group-text s-icon-btn s-icon-telegram s-no-rounded-right s-dark-bg border-0 rounded-left"></i>
+                                <input #sectionTitle type="text" name="Section Title" placeholder="telegram Number..." required [(ngModel)]='contactSections[0].contact_info.socialMedia[4].telegram'
+                                    class='form-control s-temp-btn  my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left'>
+                            </div>
+                            <!-- whatsapp inps -->
+                            <div *ngFor='let whatsappNum of contactSections[0].contact_info.socialMedia[5].whatsapp let i = index' class="input-group md-form form-sm form-2 pl-0 rounded mb-3">
+                                <i disabled
+                                    class="btn input-group-text s-icon-btn s-icon-whatsapp s-no-rounded-right s-dark-bg border-0 rounded-left"></i>
+                                <input #whtsappInps type="text" name="Section Title" placeholder="Whatsapp Number..." required
+                                    [value]='contactSections[0].contact_info.socialMedia[5].whatsapp[i]'
+                                    (blur)='updateWhatsapp(i, whtsappInps.value)'
+                                    (keyup.enter)='updateWhatsapp(i, whtsappInps.value)'
+                                    class='form-control s-temp-btn  my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right~ s-no-rounded-left'>
+                                <div class="input-group-append rounded-right">
+                                    <button (click)='deleteWhtsapp(i)' class="btn input-group-text s-delete s-supp-bg-1-opt5 border-0 rounded-right"></button>
+                                </div>
+                            </div>
+                            <!-- Whatsapp inp // Add new -->
+                            <div class="input-group md-form form-sm form-2 pl-0 rounded mb-3">
+                                <i disabled
+                                    class="btn input-group-text s-icon-btn s-icon-whatsapp s-no-rounded-right s-dark-bg border-0 rounded-left"></i>
+                                <input #whtsappInp type="text" name="Section Title" placeholder="Whatsapp Number..." required
+                                    (keyup.enter)='createNewWhatsappInp(whtsappInp.value); refreshAddInp(whtsappInp)'
+                                    class='form-control s-temp-btn  my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right~ s-no-rounded-left'>
+                                <div class="input-group-append rounded-right">
+                                    <button (click)='createNewWhatsappInp(whtsappInp.value); refreshAddInp(whtsappInp)'
+                                        class="btn input-group-text s-green-bg border-0 rounded-right s-add-new"></button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Emails Section -->
+                    <div class="tab-pane fade show mx-lg-5 mx-2 pb-4"
+                    [attr.id]="'tab-' + sectionTitles[2]" role="tabpanel"
+                    [attr.aria-labelledby]="'pills-'+ sectionTitles[2] +'-tab'">
+                        <!-- Support Account  InSec -->
+                        <div class='my-2'>
+                            <label class='my-2 s-supp-cr-1' for="">Support Account</label>
+                            <!-- Support Account Inp -->
+                            <div class="input-group md-form form-sm form-2 pl-0 rounded ">
+                                <i disabled
+                                    class="btn input-group-text s-icon-btn s-icon-support-account s-no-rounded-right s-dark-bg border-0 rounded-left"></i>
+                                <input #sectionTitle type="text" name="Section Title" placeholder="mail@example.com..." required
+                                    [value]=''
+                                    class='form-control s-temp-btn  my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left'>
+                            </div>
+                        </div>
+                        <!-- suggestions Account  InSec -->
+                        <div class='my-2'>
+                            <label class='my-2 s-supp-cr-1' for="">Suggestions Account</label>
+                            <!-- Support Account Inp -->
+                            <div class="input-group md-form form-sm form-2 pl-0 rounded">
+                                <i disabled
+                                    class="btn input-group-text s-icon-btn s-icon-suggestions-account s-no-rounded-right s-dark-bg border-0 rounded-left"></i>
+                                <input #sectionTitle type="text" name="Section Title" placeholder="mail@example.com..." required
+                                    [value]=''
+                                    class='form-control s-temp-btn  my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left'>
+                            </div>
+                        </div>
+                        <!-- Complaints Account  InSec -->
+                        <div class='my-2'>
+                            <label class='my-2 s-supp-cr-1' for="">Complaints Account</label>
+                            <!-- Complaints Account Inp -->
+                            <div class="input-group md-form form-sm form-2 pl-0 rounded">
+                                <i disabled
+                                    class="btn input-group-text s-icon-btn s-icon-complaints-account s-no-rounded-right s-dark-bg border-0 rounded-left"></i>
+                                <input #sectionTitle type="text" name="Section Title" placeholder="mail@example.com..." required
+                                    [value]=''
+                                    class='form-control s-temp-btn  my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left'>
+                            </div>
+                        </div>
+                        <!-- Inquiries Account  InSec -->
+                        <div class='my-2'>
+                            <label class='my-2 s-supp-cr-1' for="">Inquiries Account</label>
+                            <!-- Inquiries Account Inp -->
+                            <div class="input-group md-form form-sm form-2 pl-0 rounded">
+                                <i disabled
+                                    class="btn input-group-text s-icon-btn s-icon-inquiries-account s-no-rounded-right s-dark-bg border-0 rounded-left"></i>
+                                <input #sectionTitle type="text" name="Section Title" placeholder="mail@example.com..." required
+                                    [value]=''
+                                    class='form-control s-temp-btn  my-0 py-4 px-4 s-supp-bg-1-opt5 border-0 rounded-right s-no-rounded-left'>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Save -->
+                <div class="input-group md-form form-sm form-2 pl-0 d-flex justify-content-lg-end justify-content-center py-5">
+                    <button (click)='updateData()'
+                        class='btn s-btn-tem-h s-save-btn mx-1 px-5 input-group-text border-0 s-supp-bg-1-opt5 s-main-cr rounded'>Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

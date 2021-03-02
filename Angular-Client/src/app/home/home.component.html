@@ -1,0 +1,312 @@
+<!-- video  -->
+<div class='container-fluid s-video-holder p-0 d-flex justify-content-center'>
+    <iframe allow="autoplay" id='videoIframe' class='s-video p-0' frameborder="0" 
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<!-- body [products, Categories] -->
+<div class='container-fluid s-supp-bg-4 pb-5'>
+    <!-- Hot Products -->
+    <div *ngIf='hotProductIsLoaded' class='row pb-5'>
+        <!-- large Box -->
+        <div class='col-md-6 col-12 p-2'>
+            <div class='rounded-left s-large-hot-box s-hot-box w-100 d-flex align-items-end mt-md-2 ml-md-2 m-0 p-2'
+                [ngStyle]="{
+        'background-image' : 'url('+ pagesImg_service.getUrl(hotProducts[0].page_hot_sec[0].box_image) + ')'
+      }">
+                <div
+                    class='s-hot-text-holder s-supp-cr-4 w-100 h-50 text-center~ p-4 d-flex flex-column justify-content-around align-items-center'>
+                    <p class='h1 s-text-shadow'>{{hotProducts[0].page_hot_sec[0].box_name}}</p>
+                    <div class='s-hot-desc mb-2 text-center'>
+                        <p class='lead s-text-shadow'>
+                            {{hotProducts[0].page_hot_sec[0].box_desc}}
+                        </p>
+                    </div>
+                    <a [routerLink]='"/product/" + hotProducts[0].page_hot_sec[0].box_prodID'
+                        class='btn s-btn-tem-h mx-1 px-5 input-group-text border-0 s-main-bg s-dark-cr rounded'>المزيد</a>
+                </div>
+            </div>
+        </div>
+        <!-- small boxes -->
+        <div class='col-md-6 col-12 p-2'>
+            <div class='row px-0 pb-2 mb-0 mt-md-2 mx-md-2 m-0 '>
+                <div class='rounded-right s-small-hot-box s-hot-box w-100 d-flex align-items-end p-2' [ngStyle]="{
+          'background-image' : 'url('+ pagesImg_service.getUrl(hotProducts[0].page_hot_sec[1].box_image) + ')'
+        }">
+                    <div
+                        class='s-hot-text-holder s-supp-cr-4 w-100 h-50 text-center~ p-4 d-flex flex-column justify-content-around align-items-center'>
+                        <p class='h1 s-text-shadow'>{{hotProducts[0].page_hot_sec[1].box_name}}</p>
+                        <a [routerLink]='"/product/" + hotProducts[0].page_hot_sec[1].box_prodID'
+                            class='m-auto~ btn s-btn-tem-h mx-1 px-5 input-group-text border-0 s-main-bg s-dark-cr rounded'>المزيد</a>
+                    </div>
+                </div>
+            </div>
+            <div class='row px-0 pt-2 my-md-0 mx-md-2 m-0'>
+                <div class='rounded-right s-small-hot-box s-hot-box w-100 d-flex align-items-end p-2' [ngStyle]="{
+          'background-image' : 'url('+ pagesImg_service.getUrl(hotProducts[0].page_hot_sec[2].box_image) + ')'
+        }">
+                    <div
+                        class='s-hot-text-holder s-supp-cr-4 w-100 h-50 p-4 d-flex flex-column justify-content-around align-items-center'>
+                        <p class='h1 s-text-shadow'>{{hotProducts[0].page_hot_sec[2].box_name}}</p>
+                        <a [routerLink]='"/product/" + hotProducts[0].page_hot_sec[2].box_prodID'
+                            class=' btn s-btn-tem-h mx-1 px-5 input-group-text border-0 s-main-bg s-dark-cr rounded'>المزيد</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- New categories -->
+    <!-- Head -->
+    <div class='pt-5 d-flex flex-column justify-content-center'>
+        <div class='px-5 s-white-50-bg~ s-main-bg s-btn-tem-h d-inline-flex align-items-center rounded m-auto'>
+            <p class='h3 m-0 pl-2 s-dark2-cr'><b>تصنيفات </b> <span style='font-weight: normal;'>جديدة</span></p>
+        </div>
+        <div class='container pt-4 pb-5'>
+            <p class='lead m-0 s-dark2-cr text-center'>
+                ...نبذة عن تصنيفات دهب مصر
+            </p>
+        </div>
+    </div>
+    <!-- categories -->
+    <div class='container'>
+        <div class='rtl row mx-5 my-0'>
+            <ng-container *ngFor='let category of allCategories let i = index'>
+                <!-- Category box -->
+                <div class='col-lg-6 col-12 my-4 order-lg-1 order-2'>
+                    <div (click)='selectCategory(category._id, category.categ_name, category.sub_categories)' [ngStyle]="category.categ_image ? {   
+                          'background-image' :'url('+ categorie_service.getUrl(category.categ_image) + ')',
+                          ' background-repeat': 'no-repeat',
+                          'background-position': 'center',
+                          'background-size': 'cover',
+                          'border': 'none'
+                          }: false"
+                        class="rounded s-add-category-box s-category-box mx-4 my-2 d-flex justify-content-center align-items-center p-1"
+                        data-toggle="modal" data-cat='addCat' data-target="#exampleModalCenter">
+                        <div *ngIf="category.categ_image"
+                            class='s-category-box-obacity rounded d-flex justify-content-center align-items-center'>
+                            <p class='h1 text-center s-white-cr'>{{category.categ_name}}</p>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+    <!-- footer [Categories] -->
+    <div class='py-5 d-flex flex-column justify-content-around align-items-center'>
+        <a [routerLink]='"/categories"'
+            class='btn s-btn-tem-h mx-1 px-5 input-group-text border-0 s-supp-bg-3 s-dark-cr rounded'>المزيد من التصنيفات</a>
+    </div>
+    <!-- New Products -->
+    <!-- Head -->
+    <div class='pt-5 d-flex flex-column justify-content-center'>
+        <div class='px-5 s-main-bg s-btn-tem-h d-inline-flex align-items-center rounded m-auto'>
+            <p class='h3 m-0 pl-2 s-dark2-cr'><b>منتجات </b> <span style='font-weight: normal;'>جديدة</span></p>
+        </div>
+        <div class='container pt-4 pb-5'>
+            <p class='lead m-0 s-dark2-cr text-center'>
+                ...نبذة عن منتجات دهب مصر
+            </p>
+        </div>
+    </div>
+    <!-- products -->
+    <div class='rtl container s-supp-bg-4'>
+        <div class='row row m-0'>
+            <div *ngFor='let product of allProducts' class='col-lg-3 col-sm-6 col-12 pt-0 px-0 pb-3'>
+                <div (click)='selectProductById(product._id)' class=' s-product-box-holder mx-2 mb-5'>
+                    <!-- image -->
+                    <div class='s-product-box' [ngStyle]="product.prod_colors[0].prod_images != undefined ? {   
+                    'background-image' :'url('+ product_service.getUrl(product.prod_colors[0].prod_images[0].prod_side_img) + ')'
+                    } : false"></div>
+                    <!-- Title -->
+                    <p class='lead m-0 pt-3 px-3 pb-2 text-center text-md-right'>{{product.prod_name | slice:0:20}} <span *ngIf='product.prod_name.length > 20'>...</span></p>
+                    <!-- Description -->
+                    <p class='s-supp-cr-1 px-3 pb-3 text-center text-md-right'>{{product.prod_desc | slice:0:60}}...</p>
+                </div>
+            </div>
+            <div *ngIf='!allProducts' class='col-12 s-no-products d-flex justify-content-center align-items-center'>
+                <p class='display-4 text-center s-supp-cr-3'> لا يوجد منتجات !</p>
+            </div>
+        </div>
+    </div>
+    <!-- footer [product] -->
+    <div class='pb-5 d-flex flex-column justify-content-around align-items-center'>
+        <a [routerLink]='"/product"'
+            class='btn s-btn-tem-h mx-1 px-5 input-group-text border-0 s-supp-bg-3 s-dark-cr rounded'>المزيد من منتجاتنا</a>
+    </div>
+</div>
+<!-- body [About] -->
+<div *ngIf='aboutSections' id='aboutHolder' class='rtl container-fluid px-0 py-5 s-about-content-holder s-main-bg'>
+    <!-- History Seciton -->
+    <section *ngIf='aboutSections[0]' id='history' class='row p-md-5 p-3 position-relative s-section-row'>
+        <div id='conentBgImage' data-section='image' class='s-content-background position-absolute' [ngStyle]="{
+                 'background-image': 'url('+ pagesImg_service.getUrl(aboutSections[0].page_backgroundImage) + ')'
+              }"></div>
+        <div class='col-lg-8 col ml-lg-5 pb-5 text-lg-right text-center pt-5 mt-5'>
+            <p id='contentTitle' data-section='title' class=' display-3 ml-lg-5'>{{aboutSections[0].page_title}}</p>
+            <hr class=' s-about-title-hr ml-lg-5'>
+            <p id='contentArt' data-section='article' class=' ml-lg-5 lead pl-lg-5 pl-0'>
+                {{aboutSections[0].page_article}}
+            </p>
+        </div>
+    </section>
+</div>
+<!-- Blog -->
+<div class='container-fluid s-supp-bg-3 py-5'>
+    <!-- Head -->
+    <div class='pt-5 d-flex flex-column justify-content-center'>
+        <div class='px-5 s-white-50-bg~ s-main-bg s-btn-tem-h d-inline-flex align-items-center rounded m-auto'>
+            <p class='h3 m-0 pl-2 s-dark2-cr'><b> تعرف علي </b> <span style='font-weight: normal;'> آخر أخبارنا</span></p>
+        </div>
+        <div class='container pt-4'>
+            <p class='lead m-0 s-dark2-cr text-center'>
+               ...تعرف علي آخر أخبارنا
+            </p>
+        </div>
+    </div>
+    <!-- new topics -->
+    <div *ngIf='hotTopics?.length > 4' class='container '>
+        <div *ngIf='hotTopicsKey' class='row my-4'>
+            <!-- New Topics  -->
+            <div class='col-lg-6 col-12 my-3 s-hot-topic'>
+                <div [routerLink]='"/blog/" + hotTopics[0]._id' class='s-topic-img-box s-hot-holder h-100 w-100 rounded s-white-50-bg d-flex justify-content-center align-items-center'
+                [ngStyle]="hotTopics[0].topic_image != undefined ? {   
+                    'background-image' :'url('+ blog_topics_service.getUrl(hotTopics[0].topic_image)  + ')'
+                    } : false">
+                    <div class='py-2 px-5 s-opc-8 s-main-bg d-inline-flex align-items-center rounded'>
+                        <p class='h4 m-0 s-dark2-cr'>{{hotTopics[0].topic_name | slice:0:20}} <span *ngIf='hotTopics[0].topic_name.length > 20'>...</span></p>
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- hot Small  -->
+            <!-- Small Col 1 -->
+            <div class='col-lg-3 col-md-6 col-12 my-3 s-hot-topic'>
+                <!-- 1 -->
+                <div class='row h-50 w-100 pb-3 m-0'>
+                    <div [routerLink]='"/blog/" + hotTopics[1]._id' class='s-topic-img-box s-hot-holder h-100 w-100 rounded s-white-50-bg d-flex justify-content-center align-items-center'
+                    [ngStyle]="hotTopics[1].topic_image != undefined ? {   
+                    'background-image' :'url('+ blog_topics_service.getUrl(hotTopics[1].topic_image)  + ')'
+                    } : false">
+                        <div class='py-2 px-4 s-opc-8 s-main-bg d-inline-flex align-items-center rounded'>
+                            <p class='h5 m-0 s-dark2-cr'>{{hotTopics[1].topic_name | slice:0:20}} <span *ngIf='hotTopics[1].topic_name.length > 20'>...</span></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 2 -->
+                <div class='row h-50 w-100 pt-3 m-0'>
+                    <div [routerLink]='"/blog/" + hotTopics[3]._id' class='s-topic-img-box s-hot-holder h-100 w-100 rounded s-white-50-bg d-flex justify-content-center align-items-center'
+                    [ngStyle]="hotTopics[3].topic_image != undefined ? {   
+                    'background-image' :'url('+ blog_topics_service.getUrl(hotTopics[3].topic_image)  + ')'
+                    } : false">
+                        <div class='py-2 px-4 s-opc-8 s-main-bg d-inline-flex align-items-center rounded'>
+                            <p class='h5 m-0 s-dark2-cr'>{{hotTopics[3].topic_name | slice:0:20}} <span *ngIf='hotTopics[3].topic_name.length > 20'>...</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Small Col 2 -->
+            <div class='col-lg-3 col-md-6 col-12 my-3 s-hot-topic'>
+                <!-- 3 -->
+                <div class='row h-50 w-100 pb-3 m-0'>
+                    <div [routerLink]='"/blog/" + hotTopics[2]._id' class='s-topic-img-box s-hot-holder h-100 w-100 rounded s-white-50-bg d-flex justify-content-center align-items-center'
+                    [ngStyle]="hotTopics[2].topic_image != undefined ? {   
+                    'background-image' :'url('+ blog_topics_service.getUrl(hotTopics[2].topic_image)  + ')'
+                    } : false">
+                        <div class='py-2 px-4 s-opc-8 s-main-bg d-inline-flex align-items-center rounded'>
+                            <p class='h5 m-0 s-dark2-cr'>{{hotTopics[2].topic_name | slice:0:20}} <span *ngIf='hotTopics[2].topic_name.length > 20'>...</span></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 4 -->
+                <div class='row h-50 w-100 pt-3 m-0'>
+                    <div [routerLink]='"/blog/" + hotTopics[4]._id' class='s-topic-img-box s-hot-holder h-100 w-100 rounded s-white-50-bg d-flex justify-content-center align-items-center'
+                    [ngStyle]="hotTopics[4].topic_image != undefined ? {   
+                    'background-image' :'url('+ blog_topics_service.getUrl(hotTopics[4].topic_image) + ')'
+                    } : false">
+                        <div class='py-2 px-4 s-opc-8 s-main-bg d-inline-flex align-items-center rounded'>
+                            <p class='h5 m-0 s-dark2-cr'>{{hotTopics[4].topic_name | slice:0:20}} <span *ngIf='hotTopics[4].topic_name.length > 20'>...</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer [Categories] -->
+    <div class='py-5 d-flex flex-column justify-content-around align-items-center'>
+        <a [routerLink]='"/blog"'
+            class='btn s-btn-tem-h mx-1 px-5 input-group-text border-0 s-supp-bg-3 s-dark-cr rounded'>المزيد من الأخبار</a>
+    </div>
+</div>
+<!-- body[Contact] -->
+<div class='container-fluid s-dark-bg py-5'>
+<!-- Head -->
+    <div class='pt-5 d-flex flex-column justify-content-center'>
+        <div class='px-5 s-white-50-bg~ s-main-bg s-btn-tem-h d-inline-flex align-items-center rounded m-auto'>
+            <p class='h3 m-0 pl-2 s-dark2-cr'><b>تواصل </b> <span style='font-weight: normal;'> معنا</span></p>
+        </div>
+        <div class='container pt-4'>
+            <p class='lead m-0 s-white-cr text-center'>
+                ...كن علي تواصل تام معنا
+            </p>
+        </div>
+    </div>
+    <!-- form -->
+    <div class='rtl container'>
+        <div class='row p-lg-4 px-0 mx-4 m-lg-0 s-supp-cr-1'> 
+            <div class='col-12 col-lg p-4'>
+                <!-- form buttons -->
+                <div class='row bg-dark~ mt-2 justify-content-center flex-column align-items-stretch s-form-contact-input'>
+                    <div class="btn-group s-form-contact-input" role="group" aria-label="Basic example">
+                        <button type="button" class="rounded-right ml-1 btn btn-secondary border-0">الدعم</button>
+                        <button type="button" class="ml-1 btn btn-secondary border-0">اقتراحات</button>
+                        <button type="button" class="ml-1 btn btn-secondary border-0">شكاوي</button>
+                        <button type="button" class="rounded-left btn btn-secondary border-0">استفسارات</button>
+                    </div>
+                </div>
+                <!-- form inputs -->
+                <div class='row'>
+                    <!-- input {{UserName}} -->
+                    <div class="input-group my-4 s-outline-0">
+                        <div class="s-form-contact-input input-group-prepend">
+                            <div
+                                class="s-white-bg s-opc-5 s-form-contact-input-icon rounded-right input-group-text justify-content-center">
+                                <img src="/assets/Icons/contact-icons/user.png" width='25' alt="">
+                            </div>
+                        </div>
+                        <input type="text" class="s-white-bg s-opc-8 s-supp-cr-1 s-form-contact-input form-control rounded-left"
+                            id="inlineFormInputGroup" placeholder="الأسم">
+                    </div>
+                    <!-- input {{E-Mail}} -->
+                    <div class=" input-group mb-4 ">
+                        <div class="s-form-contact-input input-group-prepend">
+                            <div
+                                class="s-white-bg s-opc-5 rounded-right s-form-contact-input-icon input-group-text justify-content-center">
+                                <img src="/assets/Icons/contact-icons/mail.png" width='25' alt="">
+                            </div>
+                        </div>
+                        <input type="email" class="s-opc-8 s-white-bg rounded-left s-supp-cr-1 s-form-contact-input form-control"
+                            id="inlineFormInputGroup" placeholder="الميل">
+                    </div>
+                    <!-- input {{Subject}} -->
+                    <div class="input-group mb-4">
+                        <div class="s-form-contact-input input-group-prepend">
+                            <div
+                                class="s-white-bg s-opc-5 rounded-right s-form-contact-input-icon input-group-text justify-content-center">
+                                <img src="/assets/Icons/contact-icons/Subject.png" width='25' alt="">
+                            </div>
+                        </div>
+                        <input type="text" class="s-white-bg s-opc-8 rounded-left s-supp-cr-1 s-form-contact-input form-control"
+                            id="inlineFormInputGroup" placeholder="الموضوع">
+                    </div>
+                    <div class='col-12 s-white-bg s-opc-8 rounded-top p-0'>
+                        <textarea class="border-0 rounded-0 rounded-top p-3 m-0 form-control s-white-bg s-supp-cr-1"
+                            id="exampleFormControlTextarea1" placeholder="أكتب رسالتك..." rows="3"></textarea>
+                    </div>
+                    <div class='rounded-bottom s-white-bg s-opc-8 col p-0 m-0 d-flex align-items-end justify-content-end'>
+                        <hr class='position-absolute s-form-contact-send-hr'>
+                        <input class='rounded btn s-supp-cr-1 s-form-contact-send p-4' type="submit" value='إرسال'>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

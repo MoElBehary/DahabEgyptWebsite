@@ -1,0 +1,44 @@
+.s-make-me-up{
+    z-index: 4000;
+}
+.s-tag-box{
+    height: 100px;
+    width: 100%;
+    transition: all ease-out .2s;
+}
+.s-tag-icon-box{
+    background-position: center ;
+    background-repeat: no-repeat;
+    background-size: 35px;
+    background-image: url(../../../../assets/Icons/admin-blog/add-tag.png);
+}
+.s-new-tag-icon-box{
+    background-position: center ;
+    background-repeat: no-repeat;
+    background-size: 35px;
+    background-image: url(../../../../assets/Icons/admin-blog/tag.png);
+}
+.s-inp-font-larg{
+    font-size: 30px;
+}
+.s-tag-inp:hover{
+    color: #858989;
+}
+.s-new-tag-box{
+    border: 4px dashed rgba(152,155,155,.1);
+    transition: all ease-in-out .2s;
+}
+.s-new-tag-box:hover{
+    border: 4px dashed rgba(152,155,155,.5);
+}
+.s-del-tag-btn{
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    background-position-x: 25% ;
+    background-position-y: center ;
+    background-repeat: no-repeat;
+    background-size: 35px;
+    transition: all ease-in-out .2s;
+    background-image: url(../../../../assets/Icons/admin-blog/trash.png);
+}
